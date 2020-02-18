@@ -3,27 +3,41 @@ const mysql = require ('mysql');
 
 const app = express();
 const bodyparser = require ('body-parser');
+const exphbs = require ('express-handlebars');
+const path = require('path')
+
+
+const Sequelize = require('sequelize');
+
+
+const db = new Sequelize('producthub', 'root', '', {
+    host: 'localhost',
+    dialect: 'mysql'
+  });
 
 
 
 
+// //Create connection to a testsql for testing this app
 
-//Create connection to a testsql for testing this app
-
-const db = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : '',
-  database : 'producthub'
-});
+// const db = mysql.createConnection({
+//   host     : 'localhost',
+//   user     : 'root',
+//   password : '',
+//   database : 'producthub'
+// });
 
 //Connect  to database
-db.connect((err) => {
-    if(err){
-        throw err;
-    }
-    console.log('MYSQL is now connected');
-    });
+// db.connect((err) => {
+//     if(err){
+//         throw err;
+//     }
+//     console.log('MYSQL is now connected');
+//     });
+
+db.authenticate()
+  .then(() => console.log ('Database is connected'))
+  .catch((err) => console.log(err));
 
 app.listen ('3000', () => {
     console.log('Server started on port 3000');
