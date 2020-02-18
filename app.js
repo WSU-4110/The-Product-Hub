@@ -9,12 +9,8 @@ const path = require('path')
 
 const Sequelize = require('sequelize');
 
-
-const db = new Sequelize('producthub', 'root', '', {
-    host: 'localhost',
-    dialect: 'mysql'
-  });
-
+//Database
+const db = require('./database/db');
 
 
 
@@ -42,16 +38,20 @@ db.authenticate()
 app.listen ('3000', () => {
     console.log('Server started on port 3000');
 
-});
+}); 
 
-app.get('/product', (res, req) => {
-    db.query('SELECT * from product', (err, rows,fields)=>{
-        if(err) throw err;
-        else
-        console.log (rows);
-    })
+//Router
+app.use('/product', require('./productRouter'));
+
+
+// app.get('/product', (res, req) => {
+//     db.query('SELECT * from product', (err, rows,fields)=>{
+//         if(err) throw err;
+//         else
+//         console.log (rows);
+//     })
         
 
-});
+// });
 
 
