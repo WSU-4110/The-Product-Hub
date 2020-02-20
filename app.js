@@ -1,8 +1,8 @@
 const express = require ('express');
-const mysql = require ('mysql');
+
 
 const app = express();
-const bodyparser = require ('body-parser');
+const bodyParser = require ('body-parser');
 const exphbs = require ('express-handlebars');
 const path = require('path')
 
@@ -10,9 +10,17 @@ const path = require('path')
 const Sequelize = require('sequelize');
 
 //Database
-const db = require('./database/db');
+const db = require('./database/db')
 
+// Body Parser
+app.use(bodyParser.urlencoded({ extendGITed: false }));
 
+//Handle bar 
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+
+//static folder
+app.use(express.static(path.join(__dirname,'/public')))
 
 // //Create connection to a testsql for testing this app
 
@@ -40,9 +48,15 @@ app.listen ('3000', () => {
 
 }); 
 
-//Router
-app.use('/product', require('./productRouter'));
+//Product Routes
+app.use('/search', require('./productRouter'));
 
+// Index route
+app.get('/', (req, res) => res.render('index', { layout: 'landing' }));
+
+
+//Index Route
+//app.get('/', (req, res) => res.render('product'));
 
 // app.get('/product', (res, req) => {
 //     db.query('SELECT * from product', (err, rows,fields)=>{

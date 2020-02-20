@@ -2,23 +2,24 @@ const Sequelize = require ('sequelize');
 const db = require('./database/db');
 
 const Product = db.define('product',{
+    pid: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+      },
     name:{
         type: Sequelize.STRING
     },
     brand_name:{
         type: Sequelize.STRING
     },
-    pid:{
-        type: Sequelize.INTEGER
-    },
     category:{
         type: Sequelize.STRING
     },
-    question:{
+    comment:{
         type: Sequelize.STRING
     }
-    , 
-        timestamps: false
+    
     
 });
 

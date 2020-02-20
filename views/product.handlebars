@@ -1,0 +1,22 @@
+<section id="product" class="container">
+  <h1>Product Found</h1>
+
+  {{#each Product}}
+
+  <div class="product">
+    <h3>{{name}}</h3>
+    <p>{{brand_name}}</p>
+    <ul>
+      <li>{{category}}</li>
+      <li><a href="#" class="btn btn-reverse">Ok</a></li>
+    </ul>
+    <div class="tech">
+      <small>Comment: <span>{{comment}}</span></small>
+    </div>
+  </div>
+
+  {{else}}
+  <p>No Product to display</p>
+
+  {{/each}}
+</section>
