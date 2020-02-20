@@ -15,6 +15,10 @@
 
     <!-- Font Awesome Icons-->
     <script src="https://kit.fontawesome.com/44fabe5a7c.js" crossorigin="anonymous"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet"> -->
 </head>
 
     <body>
@@ -67,12 +71,14 @@
 
         <!-- Welcome Message -->
         <div class="jumbotron jumbotron-fluid darktext">
-          <h1 class="display-3 m-5">Welcome to the Product Hub!</h1>     
+          <h1 class="display-3 m-5 header">Welcome to the Product Hub!</h1>  
+          <h3 class="m-5 slogan text-muted">"Consult to Get The Best Result!"</h3>
+          <hr class="my-4">   
         </div>
         <div class="container">
             <div class="row justify-content-center getstarted">
-                <div class="col-lg text-center m-5">
-                  <h2 class="darktext">Get Started</h2>
+                <div class="col-lg text-center mb-5">
+                  <h2 class="darktext m-5">Get Started <hr class="my-4"></h2> 
                 </div>
             </div>
             <div class="row">
@@ -112,12 +118,17 @@
             .jumbotron{
                 background: linear-gradient(#FC9C73, #FFFFFF);
                 min-height: 350px;
+                
+            }
+            .header{
                 text-shadow: 2px 2px 2px #4D4845,
                              3px 2px 3px #ccc,
-                             2px 3px 3px #000000;
+                             2px 3px 3px #000000; 
+                font-family: 'Ubuntu', sans-serif;
             }
             .darktext{
                 color: #4D4845;
+                 font-family: 'Ubuntu', sans-serif;
             }
             img{
                 width: 15%;
@@ -130,6 +141,12 @@
             }
             .getstarted{
                 height: 100px;
+            }
+            .slogan{
+                font-family: 'Ubuntu', sans-serif;
+                font-style: italic
+            }
+
         </style>
 
 
