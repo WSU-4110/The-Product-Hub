@@ -7,8 +7,10 @@ var express = require("express"),
 	bodyParser= require("body-parser"),
 	LocalStrategy= require("passport-local"),
 	passportLocalMongoose= require("passport-local-mongoose");
+	var alert= require("alert-node");
 
 var app= express();
+app.use( express.static( "Auth" ) );
 app.set('view engine', 'ejs');
 
 //Set up Express Session for login
@@ -34,8 +36,8 @@ passport.deserializeUser(User.deserializeUser());
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: " ",
-  database: " "
+  password: "AstronomyNerd15",
+  database: "testlogin"
 });
 
 //Test connection
@@ -62,21 +64,38 @@ app.get("/register", function(req, res){
 app.post("/register", function(req, res){
 	var username = req.body.username;
 	var password = req.body.password;
+	var email	 = req.body.email;
 
-	if (username && password)
+	if (username && email && password)
 	{
 		//Insert Registeration values
-		con.query("INSERT INTO account (username, password, email) VALUE (?, ?, 'emailval')", [username, password], function(err, result)      
-		{                                                      
-		  	if (err)
-		    throw err;
+		con.query("INSERT INTO account (username, password, email) VALUE (?, ?, ?)", [username, password, email], function(err, result)      
+		{         
+		//
+			if(err){
+				if (err.code="ER_DUP_ENTRY")
+			   { 
+			   	console.log(err.message);
+			   	console.log(err.code);
+			   	//Imported alert npm package
+			   	alert("Username and/or email exists. Please choose a different one.");
+			   }
+			   else{
+			   	throw err;
+			   }
+			}                                             
+		 
+		   else{
+		   	console.log("registeration Successful!");
+		   		alert("You have registered successfuly. Please login to access our website!");
+		   	passport.authenticate("local")(req, res, function(){
+				res.redirect("/login");
+			});
+		   }
 		});
-		console.log("registeration Successful!");
+		
 	}
-
-		passport.authenticate("local")(req, res, function(){
-				res.redirect("/secret");
-		});
+		
 //First argument, pass the username and store to the database
 	//Second argument, pass the password to USer.resister, which will hash the password and store the hashes string in the databse
 	// User.register(new User({username: req.body.username}), 
@@ -129,12 +148,6 @@ app.get('/secret', function(req, res) {
 	}
 	res.end();
 });
-
-
-
-
-
-
 
 
 //Change port number to 3000
