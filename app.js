@@ -54,9 +54,9 @@ app.get("/", function(req, res){
 	res.render("home");
 });
 
-//Authorization Route
+////Authorization Route///
 
-///User Registeration///
+//User Registeration
 app.get("/register", function(req, res){
 	res.render("register");
 });
@@ -139,11 +139,21 @@ app.post('/login', function(req, res) {
 	}
 });
 
+
+//User Log Out
+app.get("/logout", function(req, res){
+	req.session.destroy();
+	console.log("User successfully logged out");
+	res.redirect("/login");
+});
+
 //Viewing secret page only when logged in
 app.get('/secret', function(req, res) {
 	if (req.session.loggedin) {
 		console.log('Successful');
-	} else {
+		res.render("secret");	
+	} 
+	else {
 		res.send('Please login to view this page!');
 	}
 	res.end();
