@@ -1,71 +1,34 @@
-const express = require ('express');
+const express = require('express');
+const exphbs = require('express-handlebars');
+const bodyParser = require('body-parser');
+const path = require('path');
 
+// Database
+const db = require('./config/database');
+
+// Test DB
+db.authenticate()
+  .then(() => console.log('The database is  connected...'))
+  .catch(err => console.log('Error: ' + err))
 
 const app = express();
-const bodyParser = require ('body-parser');
-const exphbs = require ('express-handlebars');
-const path = require('path')
 
-
-const Sequelize = require('sequelize');
-
-//Database
-const db = require('./database/db')
-
-// Body Parser
-app.use(bodyParser.urlencoded({ extendGITed: false }));
-
-//Handle bar 
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+// Handlebars
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-//static folder
-app.use(express.static(path.join(__dirname,'/public')))
+// Body Parser
+app.use(bodyParser.urlencoded({ extended: false }));
 
-// //Create connection to a testsql for testing this app
-
-// const db = mysql.createConnection({
-//   host     : 'localhost',
-//   user     : 'root',
-//   password : '',
-//   database : 'producthub'
-// });
-
-//Connect  to database
-// db.connect((err) => {
-//     if(err){
-//         throw err;
-//     }
-//     console.log('MYSQL is now connected');
-//     });
-
-db.authenticate()
-  .then(() => console.log ('Database is connected'))
-  .catch((err) => console.log(err));
-
-app.listen ('3000', () => {
-    console.log('Server started on port 3000');
-
-}); 
-
-//Product Routes
-app.use('/search', require('./productRouter'));
+// Set static folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Index route
-app.get('/', (req, res) => res.render('index', { layout: 'landing' }));
+app.get('/', (req, res) => res.render('query', { layout: 'landing' }));
 
+// Product routes
+app.use('/products', require('./routes/products'));
 
-//Index Route
-//app.get('/', (req, res) => res.render('product'));
+const PORT = 3000;
 
-// app.get('/product', (res, req) => {
-//     db.query('SELECT * from product', (err, rows,fields)=>{
-//         if(err) throw err;
-//         else
-//         console.log (rows);
-//     })
-        
-
-// });
-
-
+app.listen(PORT, console.log(`Server started on port ${PORT}`));
