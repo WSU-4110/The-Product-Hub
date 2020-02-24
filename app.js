@@ -8,6 +8,7 @@ var express = require("express"),
 	LocalStrategy= require("passport-local"),
 	passportLocalMongoose= require("passport-local-mongoose");
 	var alert= require("alert-node");
+	const submitForm= require("./SubmitForm.js");
 
 var app= express();
 app.use( express.static( "Auth" ) );
@@ -158,6 +159,21 @@ app.get('/secret', function(req, res) {
 	}
 	res.end();
 });
+
+
+//Get Prouct Form
+app.get("/ProductForm", function(req, res){
+	if (req.session.loggedin) {
+	res.render("ProductForm");
+	}
+	else{
+		alert("You must be logged in to view this page");
+		res.redirect("/login");
+	}
+});
+
+//Link Product Form webpage to Submit Form functionaility
+app.post("/ProductForm", submitForm);
 
 
 //Change port number to 3000
