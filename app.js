@@ -3,7 +3,7 @@ var express = require("express"),
 	expressSession=require("express-session"),
 	mysql= require("mysql"),
 	passport= require("passport"),
-	User= require("./models/user"),
+	//User= require("./models/user"),
 	bodyParser= require("body-parser"),
 	LocalStrategy= require("passport-local"),
 	passportLocalMongoose= require("passport-local-mongoose");
@@ -29,16 +29,16 @@ app.use(passport.session());
 //Get data from POST form
 app.use(bodyParser.urlencoded({extended : true}));
 
-//Encode and decode data from session. 
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+// //Encode and decode data from session. 
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
 
 //Connect to Database
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "AstronomyNerd15",
-  database: "testlogin"
+  password: "",
+  database: "producthub"
 });
 
 //Test connection
