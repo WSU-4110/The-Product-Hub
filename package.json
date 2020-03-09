@@ -2,7 +2,7 @@
   "name": "The-Product-Hub",
   "version": "1.0.0",
   "description": "Welcome to The Fool Stacker's repo for their latest project called \"The Product Hub: Consult to get the best results\"",
-  "main": "SubmitForm.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,6 +20,7 @@
   "dependencies": {
     "alert-node": "^2.1.4",
     "body-parser": "^1.19.0",
+    "ejs": "^3.0.1",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "mysql": "^2.18.1",

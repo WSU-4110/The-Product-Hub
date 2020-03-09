@@ -70,6 +70,8 @@ router.post('/add', (req, res) => {
 
 // Search for products
 router.get('/search', (req, res) => {
+
+  res.render("<h1>Test this</h1>")
   let { searchToken } = req.query;
 
   // Reduce to  lowercase

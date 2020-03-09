@@ -172,6 +172,12 @@ app.get("/ProductForm", function(req, res){
 	}
 });
 
+app.get("/search", function(req, res){
+	
+	res.render("search");
+	
+});
+
 //Link Product Form webpage to Submit Form functionaility
 app.post("/ProductForm", submitForm);
 
