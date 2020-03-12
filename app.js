@@ -172,9 +172,15 @@ app.get("/ProductForm", function(req, res){
 	}
 });
 
-app.get("/search", function(req, res){
+app.get("/query", function(req, res){
+	let sql = 'SELECT * FROM  products';
+	let query = con.query(sql, (err, results) => {
+		if(err) throw err;
+		console.log(results);
+		res.send("Post 2 addes");
+	})
 	
-	res.render("search");
+
 	
 });
 
@@ -186,3 +192,6 @@ app.post("/ProductForm", submitForm);
 app.listen(3000, function(){
 	console.log("Server started...");
 });
+
+//Public files
+app.use(express.static(__dirname + '/public'));
