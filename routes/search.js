@@ -4,6 +4,6 @@ const con = require('../app');
 const Search = require('../models/Search');
 
 
-router.get('/', (req, res)=> res.send('SEARCH'));
+router.get('/', (req, res)=> res.send('search'));
 
 module.exports = router;

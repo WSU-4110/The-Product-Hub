@@ -12,9 +12,7 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   <link rel="stylesheet" href="/css/styles.css">
-  <title>
-    Search Product
-  </title>
+  <title>Search Product</title>
 </head>
 
 <body>
@@ -68,35 +66,11 @@
         <input type="search" name="searchToken" placeholder="Search Product...">
         <button class="sbutton btn-outline-success" type="submit"> Search</button>
       </form>
-
-      <h2><%= title %> </h2>
-
-      <% if(true){ %>
-      
-      <% product.forEach(function(product){ %>
-        <div class="product">
-      <h5>Product Name</h5>
-      <p><%= product.name %> </p>
-      <h5>Brand Name</h5>
-      <p><%= product.brand_name %> </p>
-      <h5>Category </h5>
-      <p><%= product.category %> </p>
-      <h5>Question </h5>
-      <p><%= product.question %> </p>
-      <ul>
-        <li>Rate: </li>
-        <li><a href="#" class="btn btn-reverse">Click</a></li>
-      </ul>
-    </div>
-      <% }); %>
-    
-  </div>
-  <% } else{ %>
-  <h1>No Result to Display</h1>
-  <% } %>
+      <h2>Search Results</h2>
+     
 
 
-  </section>
+    </section>
   </div>
 
 </body>

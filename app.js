@@ -26,8 +26,14 @@ app.use(expressSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+// 
+app.use(bodyParser.json());
+
 //Get data from POST form
 app.use(bodyParser.urlencoded({extended : true}));
+
+
 
 // //Encode and decode data from session. 
 // passport.serializeUser(User.serializeUser());
@@ -40,6 +46,7 @@ var con = mysql.createConnection({
   password: "",
   database: "producthub"
 });
+
 
 //Test connection
 con.connect(function(err) {
@@ -172,17 +179,38 @@ app.get("/ProductForm", function(req, res){
 	}
 });
 
-app.get("/query", function(req, res){
-	let sql = 'SELECT * FROM  products';
+app.get("/search", function(req, res){
+
+	const {searchToken} = req.query
+	let sql = `SELECT * FROM  products WHERE name LIKE '%${searchToken}%'`;
 	let query = con.query(sql, (err, results) => {
 		if(err) throw err;
 		console.log(results);
-		res.send("Post 2 addes");
+		console.log(searchToken);
+		res.render("search", {
+			title: 'Search Results:',
+			product: results
+		});
 	})
 	
-
 	
 });
+
+
+// app.get('/search', (req, res) => {
+
+// 	res.render("search")
+// 	let { searchToken } = req.query;
+  
+// 	// Reduce to  lowercase
+// 	searchToken = searchToken.valueOf().toLowerCase();
+  
+  
+// 	//Sequelize version of SQL's Like Operator
+// 	con.findAll({ where: { name: { [LIKE]: '%' + searchToken + '%' } } })
+// 	  .then(p => res.render('search', { p }))
+// 	  .catch(err => console.log(err));
+//   });
 
 //Link Product Form webpage to Submit Form functionaility
 app.post("/ProductForm", submitForm);
