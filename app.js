@@ -167,7 +167,6 @@ app.get('/secret', function(req, res) {
 	res.end();
 });
 
-
 //Get Prouct Form
 app.get("/ProductForm", function(req, res){
 	if (req.session.loggedin) {
@@ -183,7 +182,7 @@ app.get("/search", function(req, res){
 
 	let { searchToken } = req.query;
 	
-	let sql = `SELECT * FROM  products WHERE name LIKE '%${searchToken}%' OR brand_name LIKE '%${searchToken}%'`;
+	let sql = `SELECT * FROM  products WHERE name LIKE '${searchToken}%' OR brand_name LIKE '%${searchToken}%'  AND ('${searchToken}' != "")`;
 	let query = con.query(sql, (err, results) => {
 		if(err) throw err;
 		console.log(results);
@@ -192,17 +191,33 @@ app.get("/search", function(req, res){
 			product: results
 		});
 	})
-	
-	
+		
 });
 
 
-//QUERY BY CATEGORY//
-//Electornics
+//QUERY BY CATEGORY ROUTES//
+
+//View Food Category Route
 
 app.get("/electronics", function(req, res){
 
 	let page = 'electronics'
+	let sql = `SELECT * FROM  products WHERE category = '${page}'`;
+	let query = con.query(sql, (err, results) => {
+		if(err) throw err; 
+		console.log(results);
+		res.render("product", {
+			title: 'Electronics:',
+			product: results
+		});
+	})
+		
+});
+
+//View Food Category Route
+app.get("/food", function(req, res){
+
+	let page = 'food'
 	let sql = `SELECT * FROM  products WHERE category = '${page}'`;
 	let query = con.query(sql, (err, results) => {
 		if(err) throw err;

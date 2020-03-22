@@ -220,15 +220,15 @@ label {
         color: #fff;
         overflow: hidden;        
         position: relative;
-        background-color: green;
+        background-color:  var(--primary-color);
         text-align: center;
     }
 
 .btn:hover {
-            background-color: #e6de08;
-            color: green;
+            background-color: #fff;
+            color:  var(--primary-color);
             font-weight:bold;
-            border: 2px solid green;
+            border: 2px solid  var(--primary-color);
             background: transparent;
             transition: all 0.3s ease;
             box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
@@ -238,3 +238,5 @@ label {
         text-transform: uppercase;
         font-size: 18px;
     }
+
+ 
