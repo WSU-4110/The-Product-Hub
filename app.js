@@ -181,14 +181,14 @@ app.get("/ProductForm", function(req, res){
 
 app.get("/search", function(req, res){
 
-	let {searchToken} = req.query
-	searchToken = searchToken.toLowerCase();
+	let { searchToken } = req.query;
+	
 	let sql = `SELECT * FROM  products WHERE name LIKE '%${searchToken}%' OR brand_name LIKE '%${searchToken}%'`;
 	let query = con.query(sql, (err, results) => {
 		if(err) throw err;
 		console.log(results);
 		res.render("search", {
-			title: 'Search Results:',
+			title: 'Search Results:', 
 			product: results
 		});
 	})
@@ -199,6 +199,7 @@ app.get("/search", function(req, res){
 
 //QUERY BY CATEGORY//
 //Electornics
+
 app.get("/electronics", function(req, res){
 
 	let page = 'electronics'
@@ -206,7 +207,7 @@ app.get("/electronics", function(req, res){
 	let query = con.query(sql, (err, results) => {
 		if(err) throw err;
 		console.log(results);
-		res.render("Product", {
+		res.render("product", {
 			title: 'Electronics:',
 			product: results
 		});

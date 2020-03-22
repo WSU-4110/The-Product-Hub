@@ -64,138 +64,48 @@
       </div>
     </nav>
   </header>
-  <div class="container-fluid">
+  <div class="container-fluid my-5 mx-auto">
 
-    <section id="products" class="container">
-      <h2><%= title %> </h2>
-
-      <% if(true){ %>
-
-      <% product.forEach(function(product){ %>
-      <div class="product">
-        <h5>Product Name</h5>
-        <p><%= product.name %> </p>
-        <h5>Brand Name</h5>
-        <p><%= product.brand_name %> </p>
-        <h5>Category </h5>
-        <p><%= product.category %> </p>
-        <h5>Question </h5>
-        <p><%= product.question %> </p>
-        <ul>
-          <li>Rate: </li>
-          <li><a href="#" class="btn btn-reverse">Click</a></li>
-        </ul>
-
-      </div>
-      <div class="row" id="">
-        <!-- Product Card -->
-            <div class="col-md-4">
-            <div class="card rounded mb-4">
-                <div class="card-image">
-                                    <img class="img-fluid" src="https://cdn.pixabay.com/photo/2017/04/04/18/14/video-game-console-2202635_1280.jpg" alt="Image of product" />
-                </div>
-                
-                <div class="textCard m-auto">
-                  <% if(true){ %>
-                    <% product.forEach(function(product){ %>
-                    <h5><%= product.name %> </h5>
-                    <span class="detailCard"><%= product.brand_name %> </span>
-                    <span class="detailCard"><%= product.category %> </span>
-                    <span class="detailCard">PID</span>
-                </div>
-                <div class="card-body text-center">
-                    <div class="ad-title m-auto">
-                        <p>What is the question being asked here?</p>
-                        <p>--User   --Date</p>
-                        
-                    </div>
-                    <a class="btn" href="#">Comments</a>
-                </div>
-            </div>
-        </div>
-      
+    <!-- Product Card -->
+    <% if((product.length )>0){ %>
     
-    </div>
-      <% }); %>
+      <% product.forEach(function(product){ %>
+      <div class="col-md-6 mx-auto">
+        <div class="card rounded mb-4">
+          <div class="card-image">
+            <img class="img-fluid"
+              src="https://cdn.pixabay.com/photo/2017/04/04/18/14/video-game-console-2202635_1280.jpg"
+              alt="Image of product" />
+          </div>
 
-  </div>
+
+
+          <div class="textCard m-auto">
+            <h5><%= product.name %> </h5>
+            <span class="detailCard"><%= product.brand_name %></span>
+            <span class="detailCard"><%= product.category %></span>
+            <span class="detailCard">PID</span>
+          </div>
+          <div class="card-body text-center">
+            <div class="ad-title m-auto">
+              <p><%= product.question %></p>
+              <p>--User --Date</p>
+
+            </div>
+            <a class="btn" href="#">Comments</a>
+          </div>
+        </div>
+      </div>
+    
+    <% }); %>
+
+  
   <% } else{ %>
   <h1>No Result to Display</h1>
   <% } %>
-  </section>
-
-  <div class="container">
-    <br>
-    <h4>Pro</h2>
-	<br>
 
 </div>
-  </div>
+  
 </body>
 
 </html>
-
-<style>
-
-
-
-
-
-.detailCard {      
-        background: green;
-        text-align: center;
-        border-radius: 3px;
-        color: #fff;
-        padding: 5px 10px;
-        font-size: 14px;        
-    }
-
-   
-
-.card:hover {
-            background: #fff;
-            box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
-            border-radius: 5px;
-            transition: all .5s ease;
-        }
-
-.textCard h5{
-       
-        font-weight: bold;
-        
-    }
-
-
-
-
-.btn {
-        text-transform: uppercase;
-        width: 150px;
-        height: 40px;
-        border-radius: 8px;
-        font-size: 16px;
-        display: block;
-        text-decoration: none;
-        margin: 20px auto 1px auto;
-        color: #fff;
-        overflow: hidden;        
-        position: relative;
-        background-color: green;
-        text-align: center;
-    }
-
-.btn:hover {
-            background-color: #e6de08;
-            color: green;
-            font-weight:bold;
-            border: 2px solid green;
-            background: transparent;
-            transition: all 0.3s ease;
-            box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
-        }
-
-.ad-title h5 {
-        text-transform: uppercase;
-        font-size: 18px;
-    }
-</style>

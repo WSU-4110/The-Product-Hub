@@ -55,7 +55,12 @@
             <a class="nav-link" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i> About Us</a>
           </li>
         </ul>
+        <form class="form-inline my-2 my-lg-0 ml-auto">
+          <input class="form-control" href="/search" name="searchToken" placeholder="Search..." aria-label="Search">
+          <button class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" type="submit">Search</button>
+        </form>
 
+        
 
 
       </div>
@@ -64,39 +69,36 @@
   <div class="container-fluid">
 
     <section id="products" class="container">
-      <form class="form-inline my-2 my-lg-0">
-        <input type="search" name="searchToken" placeholder="Search Product...">
-        <button class="sbutton btn-outline-success" type="submit"> Search</button>
-      </form>
+      
 
       <h2><%= title %> </h2>
 
-      <% if(true){ %>
-      
-      <% product.forEach(function(product){ %>
+      <% if((product.length )>0){ %>
+      <div>
+        <% product.forEach(function(product){ %>
         <div class="product">
-      <h5>Product Name</h5>
-      <p><%= product.name %> </p>
-      <h5>Brand Name</h5>
-      <p><%= product.brand_name %> </p>
-      <h5>Category </h5>
-      <p><%= product.category %> </p>
-      <h5>Question </h5>
-      <p><%= product.question %> </p>
-      <ul>
-        <li>Rate: </li>
-        <li><a href="#" class="btn btn-reverse">Click</a></li>
-      </ul>
-    </div>
-      <% }); %>
-    
-  </div>
-  <% } else{ %>
-  <h1>No Result to Display</h1>
-  <% } %>
+          <h5>Product Name</h5>
+          <p><%= product.name %> </p>
+          <h5>Brand Name</h5>
+          <p><%= product.brand_name %> </p>
+          <h5>Category </h5>
+          <p><%= product.category %> </p>
+          <h5>Question </h5>
+          <p><%= product.question %> </p>
+          <ul>
+            <li>Rate: </li>
+            <li><a href="#" class="btn btn-reverse">Click</a></li>
+          </ul>
+        </div>
+        <% }); %>
 
 
-  </section>
+        <% } else{ %>
+        <h1>No Result to Display</h1>
+        <%= console.log(product.length) %> 
+        <% } %>
+
+    </section>
   </div>
 
 </body>
