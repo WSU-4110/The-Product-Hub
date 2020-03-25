@@ -17,6 +17,8 @@
 
         <!-- Font Awesome Icons-->
         <script src="https://kit.fontawesome.com/44fabe5a7c.js" crossorigin="anonymous"></script>
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu:300&display=swap" rel="stylesheet">
  </head>
 
 <body>
@@ -30,9 +32,7 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-home"></i> Home <span class="sr-only">(current)</span>
-                    </a>
+                    <a class="nav-link" href="secret"><i class="fas fa-home"></i> Home</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -50,14 +50,14 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/ProductForm"><i class="fas fa-id-card"></i> Product Form<span
+                    <a class="nav-link" href="/ProductForm"><i class="fas fa-sticky-note"></i> Product Form<span
                                     class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-id-card"></i> Contact</a>
+                    <a class="nav-link" href="/contact"><i class="fas fa-id-card"></i> Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i> About Us</a>
+                    <a class="nav-link" href="/about"><i class="fa fa-info-circle" aria-hidden="true"></i> About Us</a>
                 </li>
             </ul>
 
@@ -69,13 +69,15 @@
     </nav>
 
     <div align ="center" class="jumbotron jumbotron-fluid darktext">
-        <h2 class="display-2 m-5">Product Review Request Form!</h2>
-        <h3 class="display-4 m-5"> Complete the form below to request a review for your desired product! </h3>
+        <h2 class="display-2 m-4 header">Product Review Request Form!</h2>
+        <h3 class=" m-4 slogan"> Complete the form below to request a review for your desired product! </h3>
     </div>
 
     <form class="form-center" action="/ProductForm" method="POST">
+        <div class="form-footer">Fields marked with a * are required</div>
+        <br>
         <div class="form-group">
-            <label for="exampleTextarea"> Product name: </label>
+            <label for="exampleTextarea"> Product name *</label>
              <input class="form-control" type="text" name="Product" placeholder="Product" required>
         </div>
 
@@ -91,7 +93,7 @@
         </div>
 
         <div class="form-group">
-            <label for="exampleSelect1"> Product Category: </label>
+            <label for="exampleSelect1"> Product Category *</label>
             <select class="form-control" id="Category">
                 <option>Food </option>
                 <option>Electronics</option>
@@ -104,7 +106,7 @@
         </div>
 
         <div class="form-group">
-            <label for="exampleTextarea">What is your question or concern?</label>
+            <label for="exampleTextarea">What is your question or concern? *</label>
             <input class="form-control" type="text" name="Question" placeholder="Question" required>
         </div>
 
@@ -118,13 +120,11 @@
         <div class="form-check">
             <label class="form-check-label">
                 <input type="checkbox" class="form-check-input" required>
-                By checking this box, you agree that you have read and agree with the Terms and Conditions.
+                By checking this box, you agree that you have read and agree with the Terms and Conditions. *
             </label>
         </div>
-        <input type="submit" class="btn btn-success btn-block" value="Request Product Review "></input>
+        <input type="submit" class="btn btn-dark mt-3" value="Request Product Review"></input>
     </form>
-
-
 
         <style>
             .form-center {
@@ -161,9 +161,13 @@
             .jumbotron {
                 background: linear-gradient(#FC9C73, #FFFFFF);
                 min-height: 350px;
-                text-shadow: 2px 2px 2px #4D4845, 3px 2px 3px #ccc, 2px 3px 3px #000000;
+                
                 /* -webkit-background-clip: text;
                       -webkit-text-fill-color: transparent;*/
+            }
+            .header{
+                text-shadow: 2px 2px 2px #4D4845, 3px 2px 3px #ccc, 1px 1px 1px #000000;
+                font-family: 'Ubuntu', sans-serif;
             }
 
             .darktext {
@@ -186,6 +190,15 @@
                 /*border-image: linear-gradient(#ccc, #ccc, #ccc);  */
                 /*width: 1150px;*/
             }
+            .slogan{
+                font-family: 'Ubuntu', sans-serif;
+                font-style: italic;
+                font-size: 25px;
+            }
+            .form-footer{
+                    font-size: 10px;
+                    font-weight: bold;
+                }
         </style> 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
