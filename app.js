@@ -185,7 +185,7 @@ app.get('/search', function(req, res){
 
 	let { searchToken } = req.query;
 	
-	let sql = `SELECT * FROM  products WHERE name LIKE '${searchToken}%' OR brand_name LIKE '${searchToken}%' OR category LIKE '${searchToken}%' ORDER BY name `;
+	let sql = `SELECT * FROM  product WHERE name LIKE '${searchToken}%' OR brand_name LIKE '${searchToken}%' OR category LIKE '${searchToken}%' ORDER BY name `;
 
 	let query = con.query(sql, (err, results) => {
 		if(err) throw err;
@@ -202,15 +202,30 @@ app.get('/search', function(req, res){
 //QUERY BY CATEGORY ROUTES//
 
 //View Food Category Route
+app.get("/food", function(req, res){
+
+	let page = 'food'
+	let sql = `SELECT * FROM  product WHERE category = '${page}'`;
+	let query = con.query(sql, (err, results) => {
+		if(err) throw err; 
+		console.log(results);
+		res.render("category", {
+			title: 'Food:',
+			product: results
+		});
+	})
+		
+});
+
 
 app.get("/electronics", function(req, res){
 
 	let page = 'electronics'
-	let sql = `SELECT * FROM  products WHERE category = '${page}'`;
+	let sql = `SELECT * FROM  product WHERE category = '${page}'`;
 	let query = con.query(sql, (err, results) => {
 		if(err) throw err; 
 		console.log(results);
-		res.render("product", {
+		res.render("category", {
 			title: 'Electronics:',
 			product: results
 		});
@@ -218,22 +233,68 @@ app.get("/electronics", function(req, res){
 		
 });
 
-//View Food Category Route
-app.get("/food", function(req, res){
 
-	let page = 'food'
-	let sql = `SELECT * FROM  products WHERE category = '${page}'`;
+app.get("/fashion", function(req, res){
+
+	let page = 'fashion'
+	let sql = `SELECT * FROM  product WHERE category = '${page}'`;
 	let query = con.query(sql, (err, results) => {
-		if(err) throw err;
+		if(err) throw err; 
 		console.log(results);
-		res.render("product", {
-			title: 'Electronics:',
+		res.render("category", {
+			title: 'Fashion:',
 			product: results
 		});
 	})
 		
 });
 
+
+app.get("/entertainment", function(req, res){
+
+	let page = 'entertainment'
+	let sql = `SELECT * FROM  product WHERE category = '${page}'`;
+	let query = con.query(sql, (err, results) => {
+		if(err) throw err; 
+		console.log(results);
+		res.render("category", {
+			title: 'Entertainment:',
+			product: results
+		});
+	})
+		
+});
+
+
+app.get("/homeSupplies", function(req, res){
+
+	let page = 'homeSupplies'
+	let sql = `SELECT * FROM  product WHERE category = '${page}'`;
+	let query = con.query(sql, (err, results) => {
+		if(err) throw err; 
+		console.log(results);
+		res.render("category", {
+			title: 'Home Supplies:',
+			product: results
+		});
+	})
+		
+});
+
+app.get("/other", function(req, res){
+
+	let page = 'other'
+	let sql = `SELECT * FROM  product WHERE category = '${page}'`;
+	let query = con.query(sql, (err, results) => {
+		if(err) throw err; 
+		console.log(results);
+		res.render("category", {
+			title: 'Other:',
+			product: results
+		});
+	})
+		
+});
 // app.get('/search', (req, res) => {
 
 // 	res.render("search")
