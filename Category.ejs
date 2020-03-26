@@ -70,8 +70,8 @@
     </nav>
 
     <div align ="center" class="jumbotron jumbotron-fluid darktext">
-        <h2 class="display-2 m-5">Category: <% product.category %> </h2>
-        <h3 class="display-4 m-5"> Reviews of <% product.category %> </h3>
+        <h2 class="display-2 m-5">Category: <%= product.category %> </h2>
+        <h3 class="display-4 m-5"> Reviews of <%= product.category %> </h3>
     </div>
 
     <% if((product.length )>0){ %>
@@ -82,7 +82,7 @@
         <div class="card">
           <img src= " "  class="card-img-top" >
           <div class="card-body">
-            <h5 class="card-title"> <%= product.name =%> </h5> 
+            <h5 class="card-title"> <%= product.name %> </h5> 
             <h5> Rating: <%= product.rate %> </h5>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalScrollable">
             <p class="card-text"><small class="text-muted">View Proududct Reviews</small></p>
@@ -95,7 +95,7 @@
         <div class="modal-dialog modal-dialog-scrollable" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalScrollableTitle"><%= product.name =%></h5>
+              <h5 class="modal-title" id="exampleModalScrollableTitle"><%= product.name %></h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
