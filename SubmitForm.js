@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-// Product Review Request Submit Form 
-// We are connecting to MySQL Database using node js and express
-
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
@@ -9,7 +5,7 @@ var app= express(),
     bodyParser= require("body-parser"),
     passport= require("passport"),
     LocalStrategy= require("passport-local");
-
+var alert= require("alert-node");
 app.use( express.static( "Auth" ) );
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended : true}));
@@ -35,23 +31,39 @@ const submitForm= function (req, res) {
     var question=req.body.Question;
     var image= req.body.Image;
 
-    con.connect(function (err) {
-        if (err) throw err;
+    var username=req.session.username;    
 
-        console.log("connected");
-        
+    con.connect(function (err) {
+          //  if (err) throw err;
+            console.log("connected");
+        });
+
+        ////Insert from fields into table////
         con.query("INSERT INTO reviewRequest2 (Product, Brand, productID, Category, Question, Image) VALUES (?, ? , ? , ? , ? , ?)",
-        [product, brand, productId, category, question, image], function (err, result) {
+            [product, brand, productId, category, question, image], function (err, result) {
 
             if (err) throw err;
-
-            console.log("Insert Successful");
-            res.send("Form submitted!");
+            console.log("Insert Successful");     
         });
-    });
+
+        /*function two(){
+            setTimeout(()=>{*/
+                ////Link the posted product with the logged in user////
+        con.query("INSERT INTO userforms (formID, userName) value((SELECT id FROM reviewRequest2 WHERE Product=?), ?)",
+            [product, username], function (err, result) {  
+            if (err) throw err;
+            console.log("Insert to UserForms Successful");
+            }
+        );
+
+        alert("Product posted successfully!");
+        res.redirect("secret");     
+         /*   });
+        }
+        two();*/
+
 };
 
 //To tell the app that we are exporting this function
-//Linking it to App.js
+//Linking it to app.js
 module.exports= submitForm;
->>>>>>> 229ed18c21321793b973f3f50912632cba917f41
