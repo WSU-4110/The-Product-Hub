@@ -79,7 +79,7 @@ app.get("/food", function(req, res){
 	let query = con.query(sql, (err, results) => {
 		if(err) throw err; 
 		console.log(results);
-		res.render("product", {
+		res.render("Category", {
 			title: 'Food:',
 			product: results
 		});
@@ -95,7 +95,7 @@ app.get("/electronics", function(req, res){
 	let query = con.query(sql, (err, results) => {
 		if(err) throw err; 
 		console.log(results);
-		res.render("product", {
+		res.render("Category", {
 			title: 'Electronics:',
 			product: results
 		});
@@ -111,7 +111,7 @@ app.get("/fashion", function(req, res){
 	let query = con.query(sql, (err, results) => {
 		if(err) throw err; 
 		console.log(results);
-		res.render("product", {
+		res.render("Category", {
 			title: 'Fashion:',
 			product: results
 		});
@@ -127,7 +127,7 @@ app.get("/entertainment", function(req, res){
 	let query = con.query(sql, (err, results) => {
 		if(err) throw err; 
 		console.log(results);
-		res.render("product", {
+		res.render("Category", {
 			title: 'Entertainment:',
 			product: results
 		});
@@ -136,14 +136,14 @@ app.get("/entertainment", function(req, res){
 });
 
 
-app.get("/home", function(req, res){
+app.get("/homeSupplies", function(req, res){
 
 	let page = 'home'
 	let sql = `SELECT * FROM  products WHERE category = '${page}'`;
 	let query = con.query(sql, (err, results) => {
 		if(err) throw err; 
 		console.log(results);
-		res.render("product", {
+		res.render("Category", {
 			title: 'Home Supplies:',
 			product: results
 		});
@@ -158,7 +158,7 @@ app.get("/other", function(req, res){
 	let query = con.query(sql, (err, results) => {
 		if(err) throw err; 
 		console.log(results);
-		res.render("product", {
+		res.render("Category", {
 			title: 'Other:',
 			product: results
 		});
