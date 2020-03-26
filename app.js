@@ -33,6 +33,7 @@ app.use(bodyParser.json());
 //Get data from POST form
 app.use(bodyParser.urlencoded({extended : true}));
 
+app.use(express.json());
 
 
 // //Encode and decode data from session. 
@@ -178,11 +179,14 @@ app.get("/ProductForm", function(req, res){
 	}
 });
 
-app.get("/search", function(req, res){
+
+//Search by product name, brand_name or category and display order by T
+app.get('/search', function(req, res){
 
 	let { searchToken } = req.query;
 	
-	let sql = `SELECT * FROM  products WHERE name LIKE '${searchToken}%' OR brand_name LIKE '%${searchToken}%'  AND ('${searchToken}' != "")`;
+	let sql = `SELECT * FROM  products WHERE name LIKE '${searchToken}%' OR brand_name LIKE '${searchToken}%' OR category LIKE '${searchToken}%' ORDER BY name `;
+
 	let query = con.query(sql, (err, results) => {
 		if(err) throw err;
 		console.log(results);
@@ -256,3 +260,13 @@ app.listen(3000, function(){
 
 //Public files
 app.use(express.static(__dirname + '/public'));
+
+//Email notification
+
+app.post('/email', (req, res) => {
+
+	//Send email notification
+
+	res.json({message: 'Message received'})
+})
+

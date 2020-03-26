@@ -57,10 +57,10 @@
         </ul>
         <form class="form-inline my-2 my-lg-0 ml-auto">
           <input class="form-control" href="/search" name="searchToken" placeholder="Search..." aria-label="Search">
-          <button class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" type="submit">Search</button>
+          <button class="sbtn btn-outline-white btn-md my-2 my-sm-0 ml-3" type="submit">Search</button>
         </form>
 
-        
+
 
 
       </div>
@@ -69,34 +69,49 @@
   <div class="container-fluid">
 
     <section id="products" class="container">
-      
+
 
       <h2><%= title %> </h2>
 
       <% if((product.length )>0){ %>
-      
-        <% product.forEach(function(product){ %>
-        <div class="product">
-          <h5>Product Name</h5>
-          <p><%= product.name %> </p>
-          <h5>Brand Name</h5>
-          <p><%= product.brand_name %></p>
-          <h5>Category </h5>
-          <p><%= product.category %></p>
-          <h5>Question </h5>
-          <p><%= product.question %> </p>
-          <ul>
-            <li>Rate: </li>
-            <li><a href="#" class="btn btn-reverse">Click</a></li>
-          </ul>
+
+      <% product.forEach(function(product){ %>
+        <div class="product mx-auto ">
+
+          <div class="row justify-content-between">
+            <div class="col mr ">
+        
+              <div class="cardText">
+                <h4><%= product.name %> </h4>
+                <h5><%= product.brand_name %> </h5>
+                <h5><%= product.category %> </h5>
+                <h5><%= product.brand_name %> </h5>
+                <p>Question: <%= product.question %> </p>      
+              </div>
+              <button id="sbtn"class="text-left" href="#">Show Review</button>
+            </div>
+            <div class="col">
+              <div class="product-card px-5">
+        
+                <div class="product-thumb">
+                  <img src="https://cdn.pixabay.com/photo/2017/04/04/18/14/video-game-console-2202635_1280.jpg" alt="">
+                </div>
+        
+              </div>
+            </div>
+        
+          </div>
+        
+        
+        
         </div>
-        <% }); %>
+      <% }); %>
 
 
-        <% } else{ %>
-        <h1>No Result to Display</h1>
-        <%= console.log(product.length) %> 
-        <% } %>
+      <% } else{ %>
+      <h1>No Result to Display</h1>
+      <%= console.log(product.length) %>
+      <% } %>
 
     </section>
   </div>
