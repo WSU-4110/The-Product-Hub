@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/styles.css">
+  <title>
+    Search Product
+  </title>
+</head>
+
+<body>
+  <header class="inner">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <a class="navbar-brand" href="#"><img src="logo1.jpeg" href="#" class="justify-content-center img-fluid">The
+        Product Hub</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+        aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="/"><i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <i class="fab fa-product-hunt"></i> Product Category
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/food">Food</a>
+              <a class="dropdown-item" href="/electronics">Electronics</a>
+              <a class="dropdown-item" href="/fashion">Fashion</a>
+              <a class="dropdown-item" href="/entertainment">Entertainment</a>
+              <a class="dropdown-item" href="/homeSupplies">Home Supplies</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/other">Other</a>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fas fa-id-card"></i> Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i> About Us</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0 ml-auto">
+          <input class="form-control" href="/search" name="searchToken" placeholder="Search..." aria-label="Search">
+          <button class="sbtn btn-outline-white btn-md my-2 my-sm-0 ml-3" type="submit">Search</button>
+        </form>
+
+
+
+
+      </div>
+    </nav>
+  </header>
+  <div class="container-fluid">
+
+    <section id="products" class="container">
+
+
+      <h2><%= title %> </h2>
+
+      <% if((product.length )>0){ %>
+
+      <% product.forEach(function(product){ %>
+        <div class="product mx-auto ">
+
+          <div class="row justify-content-between">
+            <div class="col mr ">
+        
+              <div class="cardText">
+                <h4><%= product.name %> </h4>
+                <h5><%= product.brand_name %> </h5>
+                <h5>Category: <%= product.category %> </h5>
+                <h5><%= product.brand_name %> </h5>
+                <p>Question: <%= product.question %> </p>
+                <p>Reviews: <%= product.review %> </p>    
+                <p>Rate: <%= product.rate %> </p>    
+              </div>
+              
+            </div>
+            <div class="col">
+              <div class="product-card px-5">
+        
+                <div class="product-thumb">
+                  <img src="https://cdn.pixabay.com/photo/2017/04/04/18/14/video-game-console-2202635_1280.jpg" alt="">
+                </div>
+        
+              </div>
+            </div>
+        
+          </div>
+        
+        
+        
+        </div>
+      <% }); %>
+
+
+      <% } else{ %>
+      <h1>No Result to Display</h1>
+      <%= console.log(product.length) %>
+      <% } %>
+
+    </section>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
+</body>
+<style>
+
+  /* CSS Variables */
+
+:root {
+  --primary-color: 	#5cb85c;
+  --primary-hover-color: #64a5b7;
+  --background-color: #333;
+  --box-shadow: 3px 4px 12px rgba(0, 0, 0, 0.7);
+}
+
+
+* {
+  box-sizing: border-box;
+  
+}
+
+body {
+  font-family: 'Titillium Web', sans-serif;
+  margin: 0;
+  color: #333;
+  background: #f4f4f4;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--primary-color);
+}
+
+.container {
+  max-width: 90%;
+  padding: 1rem 1rem;
+  margin: auto;
+  overflow: hidden;
+}
+
+.error {
+  padding: 5px;
+  border: #777 dotted 1px;
+  margin-bottom: 15px;
+}
+
+/* Header */
+header {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 6rem;
+}
+
+header nav ul {
+  display: flex;
+}
+
+header nav li {
+  margin: 0 1rem;
+}
+
+/* Login Button Spacing */
+/*header nav li:last-child {
+  margin-left: -5px;
+}*/
+
+header.inner {
+  background: var(--background-color);
+  border-bottom: 4px solid var(--primary-color);
+  position: relative;
+  box-shadow: var(--box-shadow);
+}
+
+/* Buttons */
+.btn {
+  color: #fff;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  transition: all 0.7s;
+}
+
+.btn:hover {
+  background: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  color: #fff;
+}
+
+.btn-reverse {
+  background: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.btn-reverse:hover {
+  background: var(--primary-hover-color);
+  border: 1px solid var(--primary-hover-color);
+}
+
+
+
+
+
+/* Products */
+.product {
+  background: var(--background-color);
+  border-bottom: 4px solid var(--primary-color);
+  
+  color: #fff;
+  padding: 1rem;
+  margin-bottom: 5rem;
+  box-shadow: var(--box-shadow);
+  max-width: 70%;
+}
+
+.cardText{
+  text-transform: capitalize;
+  position: relative
+}
+
+
+
+
+
+/*   */
+
+
+
+
+
+
+.detailCard {      
+        background: green;
+        text-align: center;
+        border-radius: 3px;
+        color: #fff;
+        padding: 5px 10px;
+        font-size: 14px;        
+    }
+
+   
+
+.card:hover {
+            background: #fff;
+            box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
+            border-radius: 5px;
+            transition: all .5s ease;
+        }
+
+.textCard h5{
+       
+        font-weight: bold;
+        
+    }
+
+
+
+
+.sbtn {
+        width: 150px;
+        height: 40px;
+        border-radius: 8px;
+        font-size: 16px;
+        display: block;
+        text-decoration: none;
+        margin: 2px auto 1px auto;
+        color: #fff;
+        overflow: hidden;        
+        position: relative;
+        background-color:  var(--primary-color);
+        text-align: center;
+       
+    }
+
+    #sbtn {
+      width: 150px;
+      height: 40px;
+      border-radius: 8px;
+      font-size: 16px;
+      display: block;
+      text-decoration: none;
+      
+      color: #fff;
+      overflow: hidden;        
+      position: relative;
+      background-color:  var(--primary-color);
+      text-align: center;
+     
+  }
+
+.sbtn:hover {
+            background-color:  #fff;
+            color:  var(--primary-color);
+            text-decoration: none;
+            border: 2px solid  var(--primary-color);
+            background: transparent;
+            transition: all 0.3s ease;
+            
+        }
+
+
+        input[type='search'] {
+          flex-basis: 600px;
+        }
+        
+        /* Products */
+        .product {
+          background: var(--background-color);
+          border-bottom: 2px solid var(--primary-color);
+          color: #fff;
+          padding: 2rem;
+          margin-bottom: 1rem;
+          box-shadow: var(--box-shadow);
+          max-width: 80%;
+         }
+        
+        
+        .product-card {
+            width: 300px;
+            box-shadow: 0 2px 7px #dfdfdf;
+            margin: auto;
+            background: #fafafa;
+          
+        }
+        
+        .product-thumb {
+            display: flex;
+            align-items: center;
+            height: 300px;
+            padding: auto;
+            background: #f0f0f0;
+         }
+        
+        .product-thumb img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+     
+</style>
+
+
+</html>
