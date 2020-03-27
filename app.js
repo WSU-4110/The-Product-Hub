@@ -8,7 +8,7 @@ var express = require("express"),
 	LocalStrategy= require("passport-local"),
 	passportLocalMongoose= require("passport-local-mongoose");
 	var alert= require("alert-node");
-	const submitForm= require("./SubmitForm.js");
+	
 
 var app= express();
 app.use( express.static( "Auth" ) );
@@ -185,7 +185,7 @@ app.get('/search', function(req, res){
 
 	let { searchToken } = req.query;
 	
-	let sql = `SELECT * FROM  product WHERE name LIKE '${searchToken}%' OR brand_name LIKE '${searchToken}%' OR category LIKE '${searchToken}%' ORDER BY name `;
+	let sql = `SELECT * FROM  product WHERE name LIKE '%${searchToken}%' OR brand LIKE '%${searchToken}%' OR category LIKE '%${searchToken}%' ORDER BY name `;
 
 	let query = con.query(sql, (err, results) => {
 		if(err) throw err;
@@ -295,23 +295,6 @@ app.get("/other", function(req, res){
 	})
 		
 });
-// app.get('/search', (req, res) => {
-
-// 	res.render("search")
-// 	let { searchToken } = req.query;
-  
-// 	// Reduce to  lowercase
-// 	searchToken = searchToken.valueOf().toLowerCase();
-  
-  
-// 	//Sequelize version of SQL's Like Operator
-// 	con.findAll({ where: { name: { [LIKE]: '%' + searchToken + '%' } } })
-// 	  .then(p => res.render('search', { p }))
-// 	  .catch(err => console.log(err));
-//   });
-
-//Link Product Form webpage to Submit Form functionaility
-app.post("/ProductForm", submitForm);
 
 
 //Change port number to 3000
