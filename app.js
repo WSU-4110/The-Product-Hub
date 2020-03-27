@@ -42,11 +42,12 @@ app.use(express.json());
 
 //Connect to Database
 var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "producthub"
-});
+	host: "localhost",
+	user: "root",
+	password: "AstronomyNerd15",
+	database: "testlogin"
+  });
+  
 
 
 //Test connection
