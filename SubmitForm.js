@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // Product Review Request Submit Form 
 // We are connecting to MySQL Database using node js and express
 
@@ -54,4 +53,4 @@ const submitForm= function (req, res) {
 //To tell the app that we are exporting this function
 //Linking it to App.js
 module.exports= submitForm;
->>>>>>> 229ed18c21321793b973f3f50912632cba917f41
+

@@ -39,7 +39,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">Food</a>
-              <a class="dropdown-item" href="/electronics">Electronics</a>
+              <a class="dropdown-item" href="#">Electronic</a>
               <a class="dropdown-item" href="#">Fashion</a>
               <a class="dropdown-item" href="#">Entertainment</a>
               <a class="dropdown-item" href="#">Home Supplies</a>
@@ -54,70 +54,61 @@
           <li class="nav-item">
             <a class="nav-link" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i> About Us</a>
           </li>
+          <li></li>
         </ul>
-        <form class="form-inline my-2 my-lg-0 ml-auto">
-          <input class="form-control" name="searchToken" placeholder="Search..." aria-label="Search">
-          <a href="/search"  class="sbtn btn-outline-white btn-md my-2 my-sm-0 ml-3" type="submit">Search</a>
-        </form>
-
-
-
+        
 
       </div>
+      <form class="form-inline my-2 my-lg-0 ml-auto">
+        <input type="search" class="form-control" href="/search" name="searchToken" placeholder="Search..." aria-label="Search">
+        <button class="sbtn btn-outline-white btn-md my-2 my-sm-0 ml-3" type="submit">Search</button>
+      </form>
+     
     </nav>
+    
   </header>
-  <div class="container-fluid">
+  <div class="container-fluid my-5 mx-auto">
 
-    <section id="products" class="container">
-
-
-      <h2><%= title %> </h2>
-
-      <% if((product.length )>0){ %>
-
+    <!-- Product Card -->
+    <% if((product.length )>0){ %>
+    
       <% product.forEach(function(product){ %>
-        <div class="product mx-auto ">
-
-          <div class="row justify-content-between">
-            <div class="col mr ">
-        
-              <div class="cardText">
-                <h4><%= product.name %> </h4>
-                <h5><%= product.brand_name %> </h5>
-                <h5><%= product.category %> </h5>
-                <h5><%= product.brand_name %> </h5>
-                <p>Question: <%= product.question %> </p>      
-              </div>
-              <button id="sbtn"class="text-left" href="#">Show Review</button>
-            </div>
-            <div class="col">
-              <div class="product-card px-5">
-        
-                <div class="product-thumb">
-                  <img src="https://cdn.pixabay.com/photo/2017/04/04/18/14/video-game-console-2202635_1280.jpg" alt="">
-                </div>
-        
-              </div>
-            </div>
-        
+      <div class="col-md-6 mx-auto">
+        <div class="card rounded mb-4">
+          <div class="card-image">
+            <img class="img-fluid"
+              src="https://cdn.pixabay.com/photo/2017/04/04/18/14/video-game-console-2202635_1280.jpg"
+              alt="Image of product" />
           </div>
-        
-        
-        
+
+
+
+          <div class="textCard m-auto">
+            <h5><%= product.name %> </h5>
+            <span class="detailCard"><%= product.brand_name %></span>
+            <span class="detailCard"><%= product.category %></span>
+            <span class="detailCard">PID</span>
+          </div>
+          <div class="card-body text-center">
+            <div class="ad-title m-auto">
+              <p><%= product.question %></p>
+              <p>--User --Date</p>
+
+            </div>
+            <a class="sbtn" href="#">Comments</a>
+          </div>
         </div>
-      <% }); %>
+      </div>
+    
+    <% }); %>
 
+  
+  <% } else{ %>
+  <h1>No Result to Display</h1>
+  <% } %>
 
-      <% } else{ %>
-      <h1>No Result to Display</h1>
-      <%= console.log(product.length) %>
-      <% } %>
-
-    </section>
-  </div>
-
+</div>
+  
 </body>
-
-
 
 </html>
