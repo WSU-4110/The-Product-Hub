@@ -44,8 +44,8 @@ app.use(express.json());
 var con = mysql.createConnection({
 	host: "localhost",
 	user: "root",
-	password: "AstronomyNerd15",
-	database: "testlogin"
+	password: "",
+	database: "producthub"
   });
   
 
@@ -180,14 +180,14 @@ app.get("/ProductForm", function(req, res){
 	}
 });
 
-
+//The Observer Design Pattern
 //Search by product name, brand_name or category and display order by T
 app.get('/search', function(req, res){
 
 	let { searchToken } = req.query;
 	
 	let sql = `SELECT * FROM  product WHERE name LIKE '%${searchToken}%' OR brand LIKE '%${searchToken}%' OR category LIKE '%${searchToken}%' ORDER BY name `;
-
+	//Query notifies views of changes
 	let query = con.query(sql, (err, results) => {
 		if(err) throw err;
 		console.log(results);
