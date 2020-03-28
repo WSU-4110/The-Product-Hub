@@ -54,7 +54,7 @@ export default class AddComment extends Component {
           this.setState({content : ''})
           
         })
-        .catch(err => cogoToast.error('Failed adding comment, please try again!', { hideAfter : 5 })
+        .catch(err => cogoToast.error('Failed adding comment, please try again!', { hideAfter : 15 })
         .then(() => this.setState({content : ''})));
       }
     }
