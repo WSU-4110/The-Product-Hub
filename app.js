@@ -59,8 +59,8 @@ passport.deserializeUser(User.deserializeUser());
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "AstronomyNerd15",
-  database: "testlogin"
+  password: "",
+  database: ""
 });
 
 //Test connection
