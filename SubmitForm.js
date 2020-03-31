@@ -20,9 +20,10 @@ app.use(bodyParser.urlencoded({extended : true}));
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "AstronomyNerd15",
+    password: "",
     database: "testlogin"
 });
+
 
 //Perform Post request after submitting the form
 //app.post('/submitForm');

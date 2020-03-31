@@ -44,8 +44,8 @@ app.use(express.json());
 var con = mysql.createConnection({
 	host: "localhost",
 	user: "root",
-	password: "AstronomyNerd15",
-	database: "testlogin"
+	password: "",
+	database: "producthub"
   });
   
 
@@ -171,13 +171,9 @@ app.get('/secret', function(req, res) {
 
 //Get Prouct Form
 app.get("/ProductForm", function(req, res){
-	if (req.session.loggedin) {
+	
 	res.render("ProductForm");
-	}
-	else{
-		alert("You must be logged in to view this page");
-		res.redirect("/login");
-	}
+
 });
 
 
@@ -186,18 +182,20 @@ app.get('/search', function(req, res){
 
 	let { searchToken } = req.query;
 	
+	
 	let sql = `SELECT * FROM  product WHERE name LIKE '%${searchToken}%' OR brand LIKE '%${searchToken}%' OR category LIKE '%${searchToken}%' ORDER BY name `;
 
 	let query = con.query(sql, (err, results) => {
 		if(err) throw err;
 		console.log(results);
-		res.render("search", {
+		res.render("category", {
 			title: 'Search Results:', 
 			product: results
 		});
 	})
 		
 });
+
 
 
 //QUERY BY CATEGORY ROUTES//
@@ -297,7 +295,7 @@ app.get("/other", function(req, res){
 		
 });
 
-
+ 
 //Change port number to 3000
 app.listen(3000, function(){
 	console.log("Server started...");

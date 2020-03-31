@@ -1,7 +1,7 @@
 /* CSS Variables */
 
 :root {
-  --primary-color: 	#5cb85c;
+  --primary-color: 	#FC9C73;
   --primary-hover-color: #64a5b7;
   --background-color: #333;
   --box-shadow: 3px 4px 12px rgba(0, 0, 0, 0.7);
@@ -50,13 +50,11 @@ a:hover {
 /* Header */
 header {
   display: flex;
-  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 6rem;
 }
 
 header nav ul {
