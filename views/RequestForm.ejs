@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <title>The Product Hub | Review Request Form</title>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <link rel="stylesheet" type="text/css" href="Animation.css">
+
+        <!-- Font Awesome Icons-->
+        <script src="https://kit.fontawesome.com/44fabe5a7c.js" crossorigin="anonymous"></script>
+        <style>
+            .form-center {
+                padding-top: 25px;
+                padding-bottom: 25px;
+                padding-left: 25px;
+                padding-right: 25px;
+            }
+
+            .form-control {
+                box-shadow: none;
+                font-weight: normal;
+            }
+
+            .background {
+                background-color: #4D4845;
+            }
+
+            .navbar .dropdown-menu.form-wrapper {
+                width: 300px;
+                padding: 15px;
+                left: auto;
+                right: 0;
+            }
+
+            .navbar {
+                background-color: #4D4845;
+            }
+
+            .orange {
+                background-color: #fcaf8d;
+            }
+
+            .jumbotron {
+                background: linear-gradient(#FC9C73, #FFFFFF);
+                min-height: 350px;
+                text-shadow: 2px 2px 2px #4D4845, 3px 2px 3px #ccc, 2px 3px 3px #000000;
+                /* -webkit-background-clip: text;
+                      -webkit-text-fill-color: transparent;*/
+            }
+
+            .darktext {
+                color: #4D4845;
+            }
+
+            img {
+                width: 15%;
+            }
+
+            .border1 {
+                border-right: 1px solid #ccc;
+                width: 30px;
+                height: 300px;
+                border-image: linear-gradient(#FFFFFF, #ccc, #FFFFFF) 1;
+            }
+
+            .getstarted {
+                height: 100px;
+                /*border-image: linear-gradient(#ccc, #ccc, #ccc);  */
+                /*width: 1150px;*/
+            }
+        </style> 
+ </head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#"><img src="logo1.jpeg" href="#" class="justify-content-center img-fluid">The Product Hub</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-home"></i> Home <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fab fa-product-hunt"></i> Product Category
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Food</a>
+                        <a class="dropdown-item" href="#">Electronic</a>
+                        <a class="dropdown-item" href="#">Fashion</a>
+                        <a class="dropdown-item" href="#">Entertainment</a>
+                        <a class="dropdown-item" href="#">Home Supplies</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Other</a>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-id-card"></i> Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i> About Us</a>
+                </li>
+            </ul>
+
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search">
+                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <div align ="center" class="jumbotron jumbotron-fluid darktext">
+        <h2 class="display-2 m-5">Product Review Request Form!</h2>
+        <h3 class="display-4 m-5"> Complete the form below to request a review for your desired product! </h3>
+    </div>
+
+    <form class="form-center" action="/submitForm" method="POST" >
+        <div class="form-group">
+            <label for="exampleTextarea">Product name: </label>
+             <input class="form-control" type="text" name="Product" placeholder="Product" required>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleTextarea"> Manufacturer/Brand of Product:</label>
+            <input class="form-control" type="text" name="Brand" placeholder="Brand">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleTextarea">Product ID number:</label>
+            <input class="form-control" type="text" name="ID" placeholder="ID">
+
+        </div>
+
+        <div class="form-group">
+            <label for="exampleSelect1"> Product Category: </label>
+            <select class="form-control" id="Category">
+                <option>Food </option>
+                <option>Electronics</option>
+                <option>Fashion</option>
+                <option>Entertainment </option>
+                <option>Education</option>
+                <option>Home Supplies</option>
+                <option>Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleTextarea">What is your question or concern?</label>
+            <input class="form-control" type="text" name="Question" placeholder="Question" required>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputFile">Insert an image or screenshot of the product: </label>
+            <input type="file" class="form-control-file" id="Image" aria-describedby="fileHelp">
+            <small id="fileHelp" class="form-text text-muted">Please make sure your image meets our website rules and guidelines.</small>
+        </div>
+
+
+        <div class="form-check">
+            <label class="form-check-label">
+                <input type="checkbox" class="form-check-input" required>
+                By checking this box, you agree that you have read and agree with the Terms and Conditions.
+            </label>
+        </div>
+        <input type="submit" class="btn btn-success btn-block" value="Request Product Review "></input>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+</body>
+</html>
