@@ -19,6 +19,7 @@ var express = require("express"),
 
 var app= express();
 app.use( express.static( "Auth" ) );
+app.use(express.static(__dirname+ "/images"));
 app.set('view engine', 'ejs');
 
 /*
@@ -59,8 +60,8 @@ passport.deserializeUser(User.deserializeUser());
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "",
-  database: ""
+  password: "AstronomyNerd15",
+  database: "testlogin"
 });
 
 //Test connection
