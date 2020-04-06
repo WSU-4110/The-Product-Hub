@@ -20,6 +20,7 @@ const submitForm = require("./SubmitForm.js");
 var app = express();
 app.use(express.static("Auth"));
 app.use(express.static(__dirname + "/images"));
+app.use(express.static(__dirname + "/public"));
 app.set('view engine', 'ejs');
 
 /*
@@ -60,7 +61,7 @@ passport.deserializeUser(User.deserializeUser());
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "AstronomyNerd15",
+    password: "",
     database: "testlogin"
 });
 
