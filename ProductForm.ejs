@@ -41,17 +41,17 @@
                         <i class="fab fa-product-hunt"></i> Product Category
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Food</a>
-                        <a class="dropdown-item" href="#">Electronic</a>
-                        <a class="dropdown-item" href="#">Fashion</a>
-                        <a class="dropdown-item" href="#">Entertainment</a>
-                        <a class="dropdown-item" href="#">Home Supplies</a>
+                        <a class="dropdown-item" href="/food">Food</a>
+                        <a class="dropdown-item" href="/electronics">Electronic</a>
+                        <a class="dropdown-item" href="/fashion">Fashion</a>
+                        <a class="dropdown-item" href="/entertainment">Entertainment</a>
+                        <a class="dropdown-item" href="/home">Home Supplies</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Other</a>
+                        <a class="dropdown-item" href="/other">Other</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/ProductForm"><i class="fas fa-id-card"></i> Product Form<span
+                    <a class="nav-link" href="/ProductForm.ejs"><i class="fas fa-id-card"></i> Product Form<span
                                     class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
@@ -74,7 +74,7 @@
         <h3 class="display-4 m-5"> Complete the form below to request a review for your desired product! </h3>
     </div>
 
-    <form class="form-center" action="/Produ88ctForm" method="POST">
+    <form class="form-center" action="/ProductForm" method="POST">
         <div class="form-group">
             <label for="exampleTextarea"> Product name: </label>
              <input class="form-control" type="text" name="Product" placeholder="Product" required>
@@ -115,6 +115,8 @@
             <small id="fileHelp" class="form-text text-muted">Please make sure your image meets our website rules and guidelines.</small>
         </div>
 
+
+           <!-- INSERT OPTION TO ASK THE EXPERT -->
 
         <div class="form-check">
             <label class="form-check-label">
