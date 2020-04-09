@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 
-    <title>The Product Hub | <%= product.category %> Category</title>
+    <title>The Product Hub | Category</title>
 
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -41,10 +41,10 @@
                         <i class="fab fa-product-hunt"></i> Product Category
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/food">Food</a>
+                        <a class="dropdown-item" href="food">Food</a>
                         <a class="dropdown-item" href="/electronics">Electronic</a>
-                        <a class="dropdown-item" href="fashion">Fashion</a>
-                        <a class="dropdown-item" href="entertainment">Entertainment</a>
+                        <a class="dropdown-item" href="/fashion">Fashion</a>
+                        <a class="dropdown-item" href="/entertainment">Entertainment</a>
                         <a class="dropdown-item" href="/home">Home Supplies</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/other">Other</a>
@@ -70,8 +70,8 @@
     </nav>
 
     <div align ="center" class="jumbotron jumbotron-fluid darktext">
-        <h2 class="display-2 m-5">Category: <%= product.category %> </h2>
-        <h3 class="display-4 m-5"> Reviews of <%= product.category %> </h3>
+        <h2 class="display-2 m-5">Category Page </h2>
+        <h3 class="display-4 m-5"> Products </h3>
     </div>
 
     <% if((product.length )>0){ %>
@@ -80,27 +80,29 @@
 
     <div class="card-deck">
         <div class="card">
-          <img src= " "  class="card-img-top" >
+          <img src= " <%= product.image %> "  class="card-img-top" >
           <div class="card-body">
             <h5 class="card-title"> <%= product.name %> </h5> 
-            <h5> Rating: <%= product.rate %> </h5>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalScrollable">
-            <p class="card-text"><small class="text-muted">View Proududct Reviews</small></p>
+            <!-- <h5> Rating: <%= product.rate %> </h5> -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ProductPopScrollable">
+            <p class="card-text"><small class="text-muted">View Product Reviews</small></p>
           </div>
         </button>
         </div>
 
       <!-- Modal -->
-      <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+      <div class="modal fade" id="ProductPopScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalScrollableTitle"><%= product.name =%></h5>
+              <h5 class="modal-title" id="exampleModalScrollableTitle"><%= product.name %></h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
+                <p> Product Name: <%= product.name %> </p>
+                <p> Product Image: <img src = " <%= product.image %> " > </p>
               <p> Product Brand: <%= product.brand %> </p>
               <p> Product Category: <%= product.category %> </p>
               <p> Product Question: <%= product.question %> </p>
