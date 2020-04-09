@@ -1,26 +1,31 @@
 
-// We are connecting to MySQL Database using node js and express
-
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
-var app= express(),
-    bodyParser= require("body-parser"),
-    passport= require("passport"),
-    LocalStrategy= require("passport-local");
+var cors = require('cors');
+var bodyParser= require("body-parser");
+var passport= require("passport");
+var LocalStrategy= require("passport-local");
+
+var app= express(); 
+var path = require('path');
 
 app.use( express.static( "Auth" ) );
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(bodyParser.json());
+
 app.use(bodyParser.urlencoded({extended : true}));
 
-// //Need to use Passport 
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(express.json());
 
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "adrian123",
+    password: "password",
     database: "bandhan_producthub"
 });
 
@@ -30,23 +35,14 @@ app.get('/', function(request, response)
     console.log("Done. Data displayed.");
 });
 
-db.connect(function(err))
-{
+con.connect(function(err) {
     if(err)
     {throw err; }
     console.log("Connected to the database");
-}
-
-function executeQuery(sql,cb)
-{
-db.query(sql, function(error, result, fields) {
-    if(error) 
-    {throw error;}
-    cb(result);
-}} 
+});
 
 //Perform Post request after submitting the form
-//app.post('/submitForm');
+app.post('/submitForm');
 const submitForm= function (req, res) {
     var product=req.body.Product;
     var brand=req.body.Brand;
@@ -60,7 +56,7 @@ const submitForm= function (req, res) {
 
         console.log("connected");
         
-        con.query("INSERT INTO reviewRequest2 (Product, Brand, productID, Category, Question, Image) VALUES (?, ? , ? , ? , ? , ?)",
+        con.query("INSERT INTO reviewRequest (Product, Brand, productID, Category, Question, Image) VALUES (?, ? , ? , ? , ? , ?)",
         [product, brand, productId, category, question, image], function (err, result) {
 
             if (err) throw err;
@@ -74,15 +70,15 @@ module.exports= submitForm;
 
 app.get("/food", function(req, res){
 
-	let page = 'food'
+	let product = {};
+	let page = 'food';
 	let sql = `SELECT * FROM  products WHERE category = '${page}'`;
 	let query = con.query(sql, (err, results) => {
 		if(err) throw err; 
-		console.log(results);
-		res.render("product", {
-			title: 'Food:',
-			product: results
-		});
+		else {
+		product = {print:results};
+		res.render("Category", product);
+		}
 	})
 		
 });
@@ -90,15 +86,15 @@ app.get("/food", function(req, res){
 
 app.get("/electronics", function(req, res){
 
-	let page = 'electronics'
+	let product = {};
+	let page = 'electronics';
 	let sql = `SELECT * FROM  products WHERE category = '${page}'`;
 	let query = con.query(sql, (err, results) => {
 		if(err) throw err; 
-		console.log(results);
-		res.render("product", {
-			title: 'Electronics:',
-			product: results
-		});
+		else {
+			product = {print:results};
+			res.render("Category", product);
+			}
 	})
 		
 });
@@ -106,15 +102,16 @@ app.get("/electronics", function(req, res){
 
 app.get("/fashion", function(req, res){
 
-	let page = 'fashion'
+	let product = {};
+	let page = 'fashion';
 	let sql = `SELECT * FROM  products WHERE category = '${page}'`;
-	let query = con.query(sql, (err, results) => {
+	let query = con.query(sql, (err, results) => 
+	{
 		if(err) throw err; 
-		console.log(results);
-		res.render("product", {
-			title: 'Fashion:',
-			product: results
-		});
+		else {
+			product = {print:results};
+			res.render("Category", product);
+			}
 	})
 		
 });
@@ -122,15 +119,15 @@ app.get("/fashion", function(req, res){
 
 app.get("/entertainment", function(req, res){
 
-	let page = 'entertainment'
+	let product = {};
+	let page = 'entertainment';
 	let sql = `SELECT * FROM  products WHERE category = '${page}'`;
 	let query = con.query(sql, (err, results) => {
 		if(err) throw err; 
-		console.log(results);
-		res.render("product", {
-			title: 'Entertainment:',
-			product: results
-		});
+		else {
+			product = {print:results};
+			res.render("Category", product);
+			}
 	})
 		
 });
@@ -138,38 +135,55 @@ app.get("/entertainment", function(req, res){
 
 app.get("/home", function(req, res){
 
+	let product = {};
 	let page = 'home'
 	let sql = `SELECT * FROM  products WHERE category = '${page}'`;
 	let query = con.query(sql, (err, results) => {
 		if(err) throw err; 
-		console.log(results);
-		res.render("product", {
-			title: 'Home Supplies:',
-			product: results
-		});
+		else {
+			product = {print:results};
+			res.render("Category", product);
+			}
 	})
 		
 });
 
 app.get("/other", function(req, res){
 
+	let product = {};
 	let page = 'other'
 	let sql = `SELECT * FROM  products WHERE category = '${page}'`;
 	let query = con.query(sql, (err, results) => {
 		if(err) throw err; 
-		console.log(results);
-		res.render("product", {
-			title: 'Other:',
-			product: results
-		});
+		else {
+			product = {print:results};
+			res.render("Category", product);
+			}
 	})
 		
 });
 
+// Sample for rating
+app.get("/rating", function(re, res)
+{
+	// node let product = {};
+	let product = ' ';
+	let sql = `SELECT * From rating,products WHERE rating.productID = '${product}'`;
+	let query = con.query(sql, (err, results) => {
+		if(err) throw err; 
+		console.log(results);
+		res.render("Rating", {
+			title: 'Rating',
+			rating: results
+		});
+	})
+		
+})
+
 //Link Product Form webpage to Submit Form functionaility
 app.post("/ProductForm", submitForm);
 
+//We're on port 8080
 app.listen(8080, function()
 {
-    console.log("Listening to Port 8080");
-})
+    console.log("Listening to Port 8080"); });
