@@ -1,0 +1,223 @@
+/* CSS Variables */
+
+:root {
+    --primary-color: #FC9C73;
+    --primary-hover-color: #64a5b7;
+    --background-color: #333;
+    --box-shadow: 3px 4px 12px rgba(0, 0, 0, 0.7);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Titillium Web', sans-serif;
+    margin: 0;
+    color: #333;
+    background: #f4f4f4;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+.container {
+    max-width: 90%;
+    padding: 1rem 1rem;
+    margin: auto;
+    overflow: hidden;
+}
+
+.error {
+    padding: 5px;
+    border: #777 dotted 1px;
+    margin-bottom: 15px;
+}
+
+
+/* Header */
+
+header {
+    display: flex;
+    top: 0;
+    left: 0;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav ul {
+    display: flex;
+}
+
+header nav li {
+    margin: 0 1rem;
+}
+
+
+/* Login Button Spacing */
+
+
+/*header nav li:last-child {
+  margin-left: -5px;
+}*/
+
+header.inner {
+    background: var(--background-color);
+    border-bottom: 4px solid var(--primary-color);
+    position: relative;
+    box-shadow: var(--box-shadow);
+}
+
+
+/* Buttons */
+
+.btn {
+    color: #fff;
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    transition: all 0.7s;
+}
+
+.btn:hover {
+    background: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    color: #fff;
+}
+
+.btn-reverse {
+    background: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.btn-reverse:hover {
+    background: var(--primary-hover-color);
+    border: 1px solid var(--primary-hover-color);
+}
+
+
+/* Products */
+
+.product {
+    background: var(--background-color);
+    border-bottom: 4px solid var(--primary-color);
+    color: #fff;
+    padding: 1rem;
+    margin-bottom: 5rem;
+    box-shadow: var(--box-shadow);
+    max-width: 70%;
+}
+
+.cardText {
+    text-transform: capitalize;
+    position: relative
+}
+
+
+/*   */
+
+.detailCard {
+    background: green;
+    text-align: center;
+    border-radius: 3px;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.card:hover {
+    background: #fff;
+    box-shadow: 12px 15px 20px 0px rgba(46, 61, 73, 0.15);
+    border-radius: 5px;
+    transition: all .5s ease;
+}
+
+.textCard h5 {
+    font-weight: bold;
+}
+
+.sbtn {
+    width: 150px;
+    height: 40px;
+    border-radius: 8px;
+    font-size: 16px;
+    display: block;
+    text-decoration: none;
+    margin: 2px auto 1px auto;
+    color: #fff;
+    overflow: hidden;
+    position: relative;
+    background-color: var(--primary-color);
+    text-align: center;
+}
+
+#sbtn {
+    width: 150px;
+    height: 40px;
+    border-radius: 8px;
+    font-size: 16px;
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    overflow: hidden;
+    position: relative;
+    background-color: var(--primary-color);
+    text-align: center;
+}
+
+.sbtn:hover {
+    background-color: #fff;
+    color: var(--primary-color);
+    text-decoration: none;
+    border: 2px solid var(--primary-color);
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+input[type='search'] {
+    flex-basis: 600px;
+}
+
+
+/* Products */
+
+.product {
+    background: var(--background-color);
+    border-bottom: 2px solid var(--primary-color);
+    color: #fff;
+    padding: 2rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--box-shadow);
+    max-width: 80%;
+}
+
+.product-card {
+    width: 300px;
+    box-shadow: 0 2px 7px #dfdfdf;
+    margin: auto;
+    background: #fafafa;
+}
+
+.product-thumb {
+    display: flex;
+    align-items: center;
+    height: 300px;
+    padding: auto;
+    background: #f0f0f0;
+}
+
+.product-thumb img {
+    max-width: 100%;
+    max-height: 100%;
+}
