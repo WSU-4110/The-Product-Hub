@@ -183,12 +183,12 @@ app.get('/search', function(req, res){
 	let { searchToken } = req.query;
 	
 	
-	let sql = `SELECT * FROM  product WHERE name LIKE '%${searchToken}%' OR brand LIKE '%${searchToken}%' OR category LIKE '%${searchToken}%' ORDER BY sponsored DESC,name `;
+	let sql = `SELECT * FROM  product WHERE name LIKE '%${searchToken}%' OR brand LIKE '%${searchToken}%' OR product LIKE '%${searchToken}%' ORDER BY sponsored DESC,name `;
 
 	let query = con.query(sql, (err, results) => {
 		if(err) throw err;
 		console.log(results);
-		res.render("category", {
+		res.render("product", {
 			title: 'Search Results:', 
 			product: results
 		});
@@ -208,7 +208,7 @@ app.get("/food", function(req, res){
 	let query = con.query(sql, (err, results) => {
 		if(err) throw err; 
 		console.log(results);
-		res.render("category", {
+		res.render("product", {
 			title: 'Food:',
 			product: results
 		});
