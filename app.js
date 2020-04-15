@@ -61,7 +61,7 @@ passport.deserializeUser(User.deserializeUser());
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "",
+    password: "AstronomyNerd15",
     database: "testlogin"
 });
 
@@ -241,9 +241,9 @@ app.get('/secret', function(req, res) {
 
 
 //Get Prouct Form
-app.get("/ProductForm", function(req, res) {
+app.get("/post", function(req, res) {
     if (req.session.loggedin) {
-        res.render("ProductForm");
+        res.render("post");
     } else {
         alert("You must be logged in to view this page");
         res.redirect("/login");
@@ -251,7 +251,7 @@ app.get("/ProductForm", function(req, res) {
 });
 
 //Link Product Form webpage to Submit Form functionaility
-app.post("/ProductForm", submitForm);
+app.post("/post", submitForm);
 
 //Viewing Personal Profile page only when logged in
 app.get('/profile', function(req, res) {
