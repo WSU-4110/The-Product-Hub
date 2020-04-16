@@ -14,7 +14,7 @@ var confirmedEmail;
 var someVar;
 var category = "";
 //var flag= "false";
-const submitForm = require("./SubmitForm.js");
+
 //const verify= require("./verifyemail.js");
 
 var app = express();
@@ -61,7 +61,7 @@ passport.deserializeUser(User.deserializeUser());
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "AstronomyNerd15",
+    password: "",
     database: "testlogin"
 });
 
@@ -453,7 +453,20 @@ app.get("/other", function(req, res) {
 
 });
 
+app.get("/comment/:id", function(req, res) {
 
+    console.log("comment")
+    con.query(`SELECT * FROM  comment
+    INNER JOIN product
+    ON (comment.product_id = product.product_id)
+    WHERE comment.product_id =?`, [req.params.id], (err, result) => {
+
+        res.send(result);
+
+
+    })
+
+});
 
 
 //About Us Page
@@ -469,6 +482,6 @@ app.get('/contact', function(req, res) {
 });
 
 //Change port number to 3000
-app.listen(3000, function() {
+app.listen(2000, function() {
     console.log("Server started...");
 });
