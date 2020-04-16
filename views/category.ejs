@@ -63,73 +63,148 @@
             </div>
         </nav>
     </header>
-    <div class="container-fluid">
+    div align ="center" class="jumbotron jumbotron-fluid darktext">
+    <h2 class="display-2 m-5">Category Page </h2>
+    <h4 class="display-4 m-5"> Product Reviews </h4>
+</div>
 
-        <section id="products" class="container">
+<div class = "container">
+<div class = "row"> 
+<% if((product.length )>0){ %>
 
+<% product.forEach(function(product){ %>
 
-            <h2>
-                <%= title %>
-            </h2>
-
-            <% if((product.length )>0){ %>
-
-                <% product.forEach(function(product){ %>
-                    <div class="product mx-auto ">
-
-                        <div class="row justify-content-between">
-                            <div class="col mr ">
-
-                                <div class="cardText">
-                                    <h4>
-                                        <%= product.name %>
-                                    </h4>
-                                    <h5>
-                                        <%= product.brand_name %>
-                                    </h5>
-                                    <h5>Category:
-                                        <%= product.category %>
-                                    </h5>
-                                    <h5>
-                                        <%= product.brand_name %>
-                                    </h5>
-                                    <p>Question:
-                                        <%= product.question %>
-                                    </p>
-                                    <p>Reviews:
-                                        <%= product.review %>
-                                    </p>
-                                    <p>Rate:
-                                        <%= product.rate %>
-                                    </p>
-                                </div>
-
-                            </div>
-                            <div class="col">
-                                <div class="product-card px-5">
-
-                                    <div class="product-thumb">
-                                        <img src="https://cdn.pixabay.com/photo/2017/04/04/18/14/video-game-console-2202635_1280.jpg" alt="">
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-
-
-
-                    </div>
-                    <% }); %>
-
-
-                        <% } else{ %>
-                            <h1>No Result to Display</h1>
-                            <%= console.log(product.length) %>
-                                <% } %>
-
-        </section>
+<div class="col">
+    <div class ="card" align = center class = "card border-dark" style = "height: 500px; width: 300px;" >
+        <div data-target = "#popup_img">
+      <img style = "height: 250px; width: 250px;" src= "<%= product.image %>" data-target = "#popup_img">
+        </div>
+        <h5 class="card-title"> <%= product.name %> </h5> 
+        
+        <!--  Rating: <%= product.rate %>  -->
+        <div>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ProductPopScrollable">
+        <p class="card-text"><small class="text-muted">View Product Reviews</small></p>
+    </button>
     </div>
+</div>
+</div>
+
+     <!-- Modal -->
+  <div class="modal fade" id="ProductPopScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalScrollableTitle"><%= product.name %></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <p> Product Name: <%= product.name %> </p>
+            
+          <p> Product Brand: <%= product.brand %> </p>
+          <br>
+          <p> Product Category: <%= product.category %> </p>
+          <p> Product Question: <%= product.question %> </p>
+          <br>
+          <p> Product Rate: <%= product.rate %> </p>
+          <p> Product Reviews: </p>
+          
+          <!-- Comments go HERE -->
+    
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+
+<br> 
+
+
+<% }); %> 
+
+</div>
+</div>
+<% } else{ %>
+<h1>No Result to Display</h1>
+<%= console.log(product.length) %>
+    <% } %>
+    
+    <style>
+            
+        .image_pop {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 8px;
+        }
+        .card-deck {
+            width:100 px;
+            height: 100px;
+
+        }
+        .form-center {
+            padding-top: 25px;
+            padding-bottom: 25px;
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+
+        .form-control {
+            box-shadow: none;
+            font-weight: normal;
+        }
+
+        .background {
+            background-color: #4D4845;
+        }
+
+        .navbar .dropdown-menu.form-wrapper {
+            width: 300px;
+            padding: 15px;
+            left: auto;
+            right: 0;
+        }
+
+        .navbar {
+            background-color: #4D4845;
+        }
+
+        .orange {
+            background-color: #fcaf8d;
+        }
+
+        .jumbotron {
+            background: linear-gradient(#FC9C73, #FFFFFF);
+            min-height: 350px;
+            text-shadow: 2px 2px 2px #4D4845, 3px 2px 3px #ccc, 2px 3px 3px #000000;
+            /* -webkit-background-clip: text;
+                  -webkit-text-fill-color: transparent;*/
+        }
+
+        .darktext {
+            color: #4D4845;
+        }
+
+        img {
+            width: 15%;
+        }
+
+        .border1 {
+            border-right: 1px solid #ccc;
+            width: 30px;
+            height: 300px;
+            border-image: linear-gradient(#FFFFFF, #ccc, #FFFFFF) 1;
+        }
+
+        .getstarted {
+            height: 100px;
+            /*border-image: linear-gradient(#ccc, #ccc, #ccc);  */
+            /*width: 1150px;*/
+        }
+    </style> 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

@@ -239,19 +239,62 @@ app.get('/secret', function(req, res) {
     res.end();
 });
 
-
 //Get Prouct Form
-app.get("/post", function(req, res) {
+app.get("/RequestForm", function(req, res) {
     if (req.session.loggedin) {
-        res.render("post");
+        res.render("RequestForm");
     } else {
         alert("You must be logged in to view this page");
         res.redirect("/login");
     }
 });
 
+
+const submitForm= function (req, res) {
+    var product=req.body.Product;
+    var brand=req.body.Brand;
+    var productId= req.body.ID;
+    var category=req.body.Category;
+    var question=req.body.Question;
+    var image= req.body.Image;
+
+    var username=req.session.username;    
+
+    con.connect(function (err) {
+          //  if (err) throw err;
+            console.log("connected");
+        });
+
+        ////Insert from fields into table////
+        con.query("INSERT INTO product (id, name, brand, question,category,image) VALUES (?, ? , ? , ? , ? , ?)",
+        [productId, product, brand, question,category, image], function (err, result) {
+
+            if (err) throw err;
+            console.log("Insert Successful");     
+        });
+
+        /*function two(){
+            setTimeout(()=>{*/
+                ////Link the posted product with the logged in user////
+        con.query("INSERT INTO userforms (formID, userName) value((SELECT id FROM reviewRequest2 WHERE Product=?), ?)",
+            [product, username], function (err, result) {  
+            if (err) throw err;
+            console.log("Insert to UserForms Successful");
+            }
+        );
+
+        alert("Product posted successfully!");
+        res.redirect("secret");     
+         /*   });
+        }
+        two();*/
+
+};
+
+app.post('/submitForm');
+module.exports= submitForm;
 //Link Product Form webpage to Submit Form functionaility
-app.post("/post", submitForm);
+app.post("/RequestForm", submitForm);
 
 //Viewing Personal Profile page only when logged in
 app.get('/profile', function(req, res) {
