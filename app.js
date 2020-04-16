@@ -291,23 +291,24 @@ app.get('/viewProfile', function(req, res) {
 
 
 
-//Search by product name, brand_name or category and display order by T
-app.get('/search', function(req, res) {
 
-    let { searchToken } = req.query;
+//Search by product name, brand_name or category and prioritize sponsored proucts
+app.get('/search', function(req, res){
 
+	let { searchToken } = req.query;
+	
+	
+	let sql = `SELECT * FROM  product WHERE name LIKE '%${searchToken}%' OR brand LIKE '%${searchToken}%' OR category LIKE '%${searchToken}%' ORDER BY sponsored DESC,name `;
 
-    let sql = `SELECT * FROM  product WHERE name LIKE '%${searchToken}%' OR brand LIKE '%${searchToken}%' OR category LIKE '%${searchToken}%' ORDER BY name `;
-
-    let query = con.query(sql, (err, results) => {
-        if (err) throw err;
-        console.log(results);
-        res.render("category", {
-            title: 'Search Results:',
-            product: results
-        });
-    })
-
+	let query = con.query(sql, (err, results) => {
+		if(err) throw err;
+		console.log(results);
+		res.render("product", {
+			title: 'Search Results:', 
+			product: results
+		});
+	})
+		
 });
 
 
