@@ -1,7 +1,0 @@
-var mailOptions = {
-    from: 'example@gmail.com>', // sender address
-    to: 'receiver@destination.com', // list of receivers
-    subject: 'Email Example', // Subject line
-    text: text //, // plaintext body
-    // html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
-};
