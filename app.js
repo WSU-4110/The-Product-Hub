@@ -13,8 +13,14 @@ var email;
 var confirmedEmail;
 var someVar;
 var category = "";
+//*********marwan**********/
+const http = require('http');
+const fs = require('fs');
+
+const hostname = '127.0.0.1'
+const port = '3000'
+//****************************/
 //var flag= "false";
-const submitForm = require("./SubmitForm.js");
 //const verify= require("./verifyemail.js");
 
 var app = express();
@@ -61,15 +67,17 @@ passport.deserializeUser(User.deserializeUser());
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "AstronomyNerd15",
+    password: "",
     database: "testlogin"
 });
 
-//Test connection
+//Test3, Database Connection 
+module.exports = () =>{
 con.connect(function(err) {
     if (err) throw err;
     console.log("Connected to database!");
 });
+return "true";}
 
 /////ROUTES/////
 
@@ -194,12 +202,14 @@ app.post('/login', function(req, res) {
     }
 });
 
-////User Log Out////
+//Test 1, logout function 
+module.exports = () =>{
 app.get("/logout", function(req, res) {
     req.session.destroy();
     console.log("User successfully logged out");
     res.redirect("/login");
 });
+    return true;}
 
 //Viewing secret page only when logged in
 app.get('/secret', function(req, res) {
@@ -239,16 +249,18 @@ app.get('/secret', function(req, res) {
     res.end();
 });
 
-//Get Prouct Form
-app.get("/RequestForm", function(req, res) {
+
+//Test2 /productform function 
+module.exports = () =>{
+app.get("/ProductForm", function(req, res) {
     if (req.session.loggedin) {
-        res.render("RequestForm");
+        res.render("ProductForm");
     } else {
         alert("You must be logged in to view this page");
         res.redirect("/login");
     }
 });
-
+    return true;}
 
 const submitForm= function (req, res) {
     var product=req.body.Product;
@@ -258,43 +270,26 @@ const submitForm= function (req, res) {
     var question=req.body.Question;
     var image= req.body.Image;
 
-    var username=req.session.username;    
-
     con.connect(function (err) {
-          //  if (err) throw err;
-            console.log("connected");
-        });
+        if (err) throw err;
 
-        ////Insert from fields into table////
+        console.log("connected");
+        
         con.query("INSERT INTO product (id, name, brand, question,category,image) VALUES (?, ? , ? , ? , ? , ?)",
         [productId, product, brand, question,category, image], function (err, result) {
 
             if (err) throw err;
-            console.log("Insert Successful");     
+
+            console.log("Insert Successful");
+            res.send("Form submitted!");
         });
-
-        /*function two(){
-            setTimeout(()=>{*/
-                ////Link the posted product with the logged in user////
-        con.query("INSERT INTO userforms (formID, userName) value((SELECT id FROM reviewRequest2 WHERE Product=?), ?)",
-            [product, username], function (err, result) {  
-            if (err) throw err;
-            console.log("Insert to UserForms Successful");
-            }
-        );
-
-        alert("Product posted successfully!");
-        res.redirect("secret");     
-         /*   });
-        }
-        two();*/
-
+    });
 };
-
 app.post('/submitForm');
 module.exports= submitForm;
+
 //Link Product Form webpage to Submit Form functionaility
-app.post("/RequestForm", submitForm);
+app.post("/ProductForm", submitForm);
 
 //Viewing Personal Profile page only when logged in
 app.get('/profile', function(req, res) {
@@ -334,24 +329,23 @@ app.get('/viewProfile', function(req, res) {
 
 
 
+//Search by product name, brand_name or category and display order by T
+app.get('/search', function(req, res) {
 
-//Search by product name, brand_name or category and prioritize sponsored proucts
-app.get('/search', function(req, res){
+    let { searchToken } = req.query;
 
-	let { searchToken } = req.query;
-	
-	
-	let sql = `SELECT * FROM  product WHERE name LIKE '%${searchToken}%' OR brand LIKE '%${searchToken}%' OR category LIKE '%${searchToken}%' ORDER BY sponsored DESC,name `;
 
-	let query = con.query(sql, (err, results) => {
-		if(err) throw err;
-		console.log(results);
-		res.render("product", {
-			title: 'Search Results:', 
-			product: results
-		});
-	})
-		
+    let sql = `SELECT * FROM  product WHERE name LIKE '%${searchToken}%' OR brand LIKE '%${searchToken}%' OR category LIKE '%${searchToken}%' ORDER BY name `;
+
+    let query = con.query(sql, (err, results) => {
+        if (err) throw err;
+        console.log(results);
+        res.render("category", {
+            title: 'Search Results:',
+            product: results
+        });
+    })
+
 });
 
 
@@ -423,7 +417,7 @@ app.get("/entertainment", function(req, res) {
 });
 
 
-app.get("/homeSupplies", function(req, res) {
+app.get("/home", function(req, res) {
 
     let page = 'homeSupplies'
     let sql = `SELECT * FROM  product WHERE category = '${page}'`;
@@ -472,3 +466,49 @@ app.get('/contact', function(req, res) {
 app.listen(3000, function() {
     console.log("Server started...");
 });
+
+
+/************marwan******************/
+
+app.get('/category',function(req,res)  {
+    if(req.method == 'GET' && req.url == '/')              
+    {   
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'text/html');
+        fs.createReadStream('./category.ejs').pipe(res);           
+
+    }
+    else if(req.method == "GET" && req.url == '/category'){
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json');
+
+        con.query('SELECT * FROM testlogin.comments', function(error,results,fields){
+            if(error) throw error;
+
+            var comments = JSON.stringify(results);
+
+            res.end(comments);
+
+        });
+    }
+    else if(req.method == "POST" && req.url == "/insert"){
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'text/plain');
+
+        var content = '';
+        req.on('data', function(data){
+            content +=data;
+
+            var obj = JSON.parse(content);
+            console.log("username is " + obj.name);
+            console.log("comment is " + obj.message);
+
+            con.query('INSERT INTO testlogin.comments (comments.userName , comments.comment) VALUES (?,?)',[obj.name,obj.message], function(error,results,fields){
+                if(error) throw error;
+   
+            });
+        });
+    }
+    
+});
+
