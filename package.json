@@ -36,7 +36,10 @@
         "web-push": "^3.4.3"
     },
     "devDependencies": {
+        "busboy": "^0.3.1",
+        "express-fileupload": "^1.1.7-alpha.3",
         "nodemailer": "^6.4.6",
-        "nodemon": "^2.0.2"
+        "nodemon": "^2.0.2",
+        "then-busboy": "^4.4.0"
     }
 }
