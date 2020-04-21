@@ -1,16 +1,17 @@
-**The Product Hub: consult to get the best result**
+# The Product Hub: consult to get the best result
+![alt text](https://github.com/WSU-4110/The-Product-Hub/blob/master/images/logo1.jpeg "Logo")
+## - Collaborators to this project:
 
-- Collaborators to this project:
+## The Fool Stacker: 
+### Dana Abuqalbin, Bandhanpreet Kaur, Noble Amarteifio, Marwan Abbas.
 
-The Fool Stacker: Dana Abuqalbin, Bandhanpreet Kaur, Noble Amarteifio, Marwan Abbas.
-
-- What you will need:
+#### - What you will need:
 
 - Express Node JS
 - MySQL database
 - Visual Studio Code/Sublime/Any other application that is compatible with Express Node JS
 
-- Dependencies for Node JS:
+#### - Dependencies for Node JS:
 
 - alert-node
 - body-parser
@@ -27,14 +28,14 @@ The Fool Stacker: Dana Abuqalbin, Bandhanpreet Kaur, Noble Amarteifio, Marwan Ab
 - sql
 - web-push
 
-- DevDependencies:
+#### - DevDependencies:
 
 - chai
 - mocha
 - nodemailer
 - nodemon
 
-- How to run the program:
+#### - How to run the program:
 
 - Clone or download our Github
 - Open the project on your application, we will show the steps for using it on Visual Studio Code.
