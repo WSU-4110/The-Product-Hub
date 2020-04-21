@@ -45,5 +45,5 @@ Dana Abuqalbin, Bandhanpreet Kaur, Noble Amarteifio, Marwan Abbas.
 - Run the command: node app.js
 - This commands starts the server and connects to the database.
 - Next, we will host the current workspace and open it in a browser (control + shift + P) and select Express.
-- This will start the server and listen to port 3000. If your URL does not have a port or has a different port, please change it to 3000 and it will work.
+- This will start the server and listen to port 3000. Webserver(localhost:3000) .If your URL does not have a port or has a different port, please change it to 3000 and it will work.
 - Make sure you have the images in the images folder.
