@@ -1,7 +1,7 @@
 # The Product Hub: consult to get the best result
 ![alt text](https://github.com/WSU-4110/The-Product-Hub/blob/master/images/logo1.jpeg "Logo")
 ## - Collaborators to this project:
-** The Fool Stacker: **
+**The Fool Stacker:**
 Dana Abuqalbin, Bandhanpreet Kaur, Noble Amarteifio, Marwan Abbas.
 
 #### - What you will need:
