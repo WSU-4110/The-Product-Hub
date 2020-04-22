@@ -15,6 +15,7 @@ var someVar;
 var category = "";
 //var flag= "false";
 const submitForm = require("./SubmitForm.js");
+const submitReview= require("./SubmitReview.js");
 //const verify= require("./verifyemail.js");
 
 var app = express();
@@ -250,12 +251,26 @@ app.get("/post", function(req, res) {
 });
 
 
-
-
 //Link Product Form webpage to Submit Form functionaility
 app.post("/post", submitForm);
 
 
+
+//Get Review Form
+app.get("/review", function(req, res) {
+    if (req.session.loggedin) {
+        res.render("review");
+    } else {
+        alert("You must be logged in to view this page");
+        res.redirect("/login");
+    }
+});
+
+
+
+
+//Link Product Form webpage to Submit Form functionaility
+app.post("/review", submitReview);
 //Post Review
 //Get Prouct Form
 /*app.get("/post", function(req, res) {

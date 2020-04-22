@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="/css/styles.css">
     <title>
-        Product Form
+        Review Form
     </title>
 </head>
 
@@ -69,12 +69,12 @@
 
 
    <div align ="center" class="jumbotron jumbotron-fluid darktext">
-        <h2 class="display-2 m-4 header">Product Review Request Form!</h2>
+        <h2 class="display-2 m-4 header">Product Review Form!</h2>
         <h3 class=" m-4 slogan"> Complete the form below to request a review for your desired product! </h3>
     </div>
 
 
-    <form class="form-center" action="/post" method="POST">
+    <form class="form-center" action="/review" method="POST">
        <div class="form-footer">Fields marked with a * are required</div>
         <br>
         <div class="form-group">
@@ -108,7 +108,7 @@
 
         <div class="form-group">
             <label for="exampleTextarea">Review *</label>
-            <input class="form-control" type="text" name="Question" placeholder="Question" required>
+            <input class="form-control" type="text" name="Remark" placeholder="Remark" required>
         </div>
 
         <div class="form-group">
@@ -117,6 +117,10 @@
             <small id="fileHelp" class="form-text text-muted">Please make sure your image meets our website rules and guidelines.</small>
         </div>
 
+        <div class="form-group">
+            <label for="exampleTextarea">Rating</label>
+            <input class="form-control" type="text" name="Rating" placeholder="Rating" required>
+        </div>
 
         <div class="form-check">
             <label class="form-check-label">
