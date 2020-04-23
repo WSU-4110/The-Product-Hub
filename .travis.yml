@@ -5,5 +5,5 @@ script:
   - npm test
 
  install:
- -npm ci
+ -npm install
   
