@@ -6,6 +6,6 @@ cache:
   - node_modules
 
   install:
-    - nom install
+    - npm install
 script:
   - npm test
