@@ -72,6 +72,7 @@ const submitForm = function(req, res) {
 
                 if (err) throw err;
                 console.log("Insert Successful");
+                console.log(req.body)
 
             });
         });
