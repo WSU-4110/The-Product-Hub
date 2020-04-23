@@ -9,4 +9,3 @@ cache:
     - nom install
 script:
   - npm test
-  - npm run build
