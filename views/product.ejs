@@ -88,7 +88,7 @@ my-sm-0 ml-3" type="submit" value="Search">
 
                     <div class="row justify-content-between">
                         <div class="col mr ">
-                            <% if((product.sponsored )=='yes'){ %>
+                            <% if((product.sponsored )=='Yes'){ %>
                             <span class="sponsor-label">Sponsored</span>
                             <% } %>
 
@@ -114,8 +114,7 @@ my-sm-0 ml-3" type="submit" value="Search">
                                 <p>Rate:
                                     <%= product.rate %>
                                 </p>
-                                <button class="btn btn-outline-white btn-md my-2
-                                        my-sm-0 " href="/comment/2">View Product Page</button>
+                                <button class="btn btn-outline-white btn-md my-2 my-sm-0 " href="/comment/:<%= product.id %>">View Product Page</button>
                             </div>
 
 

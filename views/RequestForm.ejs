@@ -130,9 +130,10 @@
                 </li>
             </ul>
 
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search">
-                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+            <form action="/search" class="form-inline my-2 my-lg-0">
+                <input class="form-control" name="searchToken" placeholder="Search...">
+                <input class="btn btn-outline-white btn-md my-2
+my-sm-0 ml-3" type="submit" value="Search">
             </form>
         </div>
     </nav>
@@ -175,12 +176,12 @@
         </div>
         <div class="form-group">
             <label for="exampleSelect1"> Sponsored Product? </label>
-            <select class="form-control" name="Sponsored"  id="select">
-                <option value>No </option>
-                <option value>Yes</option>
+            <select class="form-control" name="Sponsored" >
+                <option name="no">No </option>
+                <option name="yes">Yes</option>
             </select>
         </div>
-
+       
         <div class="form-group">
             <label for="exampleInputFile">Insert an image or screenshot of the product: </label>
             <input type="file" class="form-control-file" id="Image" name="uploaded_image" aria-describedby="fileHelp">
@@ -194,7 +195,9 @@
                 By checking this box, you agree that you have read and agree with the Terms and Conditions. *
             </label>
         </div>
-        <input type="submit" class="btn btn-dark mt-3" value="Request Product Review"></input>
+        <input type="submit"  class="btn btn-dark mt-3"
+        value="Request Product Review "></input>
+        
     </form>
 
     <style>
