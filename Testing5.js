@@ -21,9 +21,9 @@ var con = mysql.createConnection({
 
 
 //Test5:
-const submitForm= function (req, res) {
+module.exports= function (req, res) {
         alert("Product posted successfully!");
         res.redirect("secret");     
 return true;
 };
-module.exports= submitForm;
+
