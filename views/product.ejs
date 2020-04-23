@@ -93,7 +93,7 @@ my-sm-0 ml-3" type="submit" value="Search">
                 <h2 class="product-header">
                     <%= title %>
                 </h2>
-
+                <br mb-1>
                 <% if((product.length )>0){ %>
 
                     <% product.forEach(function(product){ %>
@@ -101,7 +101,7 @@ my-sm-0 ml-3" type="submit" value="Search">
 
                             <div class="row justify-content-between">
                                 <div class="col mr ">
-                                    <% if((product.sponsored )>0){ %>
+                                    <% if((product.sponsored )=='yes'){ %>
                                         <span class="sponsor-label">Sponsored</span>
                                         <% } %>
                 
@@ -127,8 +127,10 @@ my-sm-0 ml-3" type="submit" value="Search">
                                         <p>Rate:
                                             <%= product.rate %>
                                         </p>
-
+                                        <button class="btn btn-outline-white btn-md my-2
+                                        my-sm-0 " href="/comment/2">View Product Page</button>
                                     </div>
+                                    
 
                                 </div>
                                 <div class="col ">

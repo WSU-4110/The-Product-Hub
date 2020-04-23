@@ -7,7 +7,9 @@ var express = require("express"),
     User = require("./models/user"),
     bodyParser = require("body-parser"),
     LocalStrategy = require("passport-local"),
-    passportLocalMongoose = require("passport-local-mongoose");
+    passportLocalMongoose = require("passport-local-mongoose"),
+    fileUpload = require("express-fileupload"),
+    path = require('path');
 var alert = require("alert-node");
 var email;
 var confirmedEmail;
@@ -15,14 +17,18 @@ var someVar;
 var category = "";
 //var flag= "false";
 const submitForm = require("./SubmitForm.js");
+const submitReview= require("./SubmitReview.js");
+
+//const verify= require("./verifyemail.js");
 //const verify= require("./verifyemail.js");
 
 var app = express();
 app.use(express.static("Auth"));
 app.use(express.static(__dirname + "/images"));
 app.use(express.static(__dirname + "/public"));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(fileUpload());
 app.set('view engine', 'ejs');
-
 /*
     Here we are configuring our SMTP Server details.
     STMP is mail server which is responsible for sending and recieving email.
@@ -61,7 +67,7 @@ passport.deserializeUser(User.deserializeUser());
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "AstronomyNerd15",
+    password: "",
     database: "testlogin"
 });
 
@@ -241,8 +247,27 @@ app.get('/secret', function(req, res) {
 
 //Get Prouct Form
 app.get("/RequestForm", function(req, res) {
-    if (req.session.loggedin) {
+    res.render("RequestForm");
+    /*if (req.session.loggedin) {
         res.render("RequestForm");
+    } else {
+        alert("You must be logged in to view this page");
+        res.redirect("/login");
+    }*/
+});
+
+
+
+
+//Link Product Form webpage to Submit Form functionaility
+app.post("/RequestForm", submitForm);
+
+
+
+//Get Review Form
+app.get("/review", function(req, res) {
+    if (req.session.loggedin) {
+        res.render("review");
     } else {
         alert("You must be logged in to view this page");
         res.redirect("/login");
@@ -252,10 +277,25 @@ app.get("/RequestForm", function(req, res) {
 
 
 
-app.post('/submitForm');
-module.exports= submitForm;
 //Link Product Form webpage to Submit Form functionaility
-app.post("/RequestForm", submitForm);
+app.post("/review", submitReview);
+//Post Review
+//Get Prouct Form
+/*app.get("/post", function(req, res) {
+    if (req.session.loggedin) {
+        res.render("post");
+    } else {
+        alert("You must be logged in to view this page");
+        res.redirect("/login");
+    }
+});
+
+app.post('/review');
+module.exports= review;
+//Link Product Form webpage to Submit Form functionaility
+app.post("/post", review);*/
+
+
 
 //Viewing Personal Profile page only when logged in
 app.get('/profile', function(req, res) {
@@ -308,7 +348,7 @@ app.get('/search', function(req, res){
 		if(err) throw err;
 		console.log(results);
 		res.render("product", {
-			title: 'Search Results:', 
+			title: 'Search Results:' + searchToken, 
 			product: results
 		});
 	})
@@ -334,6 +374,8 @@ app.get("/food", function(req, res) {
     })
 
 });
+
+
 
 
 app.get("/electronics", function(req, res) {
@@ -428,6 +470,7 @@ app.get('/contact', function(req, res) {
     console.log('Contact Us');
     res.render("contact");
 });
+
 
 //Change port number to 3000
 app.listen(3000, function() {
