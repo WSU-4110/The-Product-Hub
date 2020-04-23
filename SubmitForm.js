@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "",
+    password: "AstronomyNerd15",
     database: "testlogin"
 });
 
@@ -59,6 +59,9 @@ const submitForm = function(req, res) {
     var filePath = "/uploads/" + Date.now() + img_name;
     var defaultPath = "public/img/logo.jpeg";
 
+            if (err) throw err;
+            console.log("Insert Successful");     
+        });
 
     if (file.mimetype == "image/jpeg" || file.mimetype == "image/png" || file.mimetype == "image/gif") {
         file.mv("public/uploads/" + Date.now() + file.name, function(err) {

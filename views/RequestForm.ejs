@@ -17,8 +17,80 @@
 
     <!-- Font Awesome Icons-->
     <script src="https://kit.fontawesome.com/44fabe5a7c.js" crossorigin="anonymous"></script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300&display=swap" rel="stylesheet">
+    <style>
+     .navbar {
+            background-color: #4D4845;
+        }
+            .form-center {
+                padding-top: 25px;
+                padding-bottom: 25px;
+                padding-left: 25px;
+                padding-right: 25px;
+            }
+
+            .form-control {
+                box-shadow: none;
+                font-weight: normal;
+            }
+
+            .background {
+                background-color: #4D4845;
+            }
+
+            .navbar .dropdown-menu.form-wrapper {
+                width: 300px;
+                padding: 15px;
+                left: auto;
+                right: 0;
+            }
+
+
+            .orange {
+                background-color: #fcaf8d;
+            }
+
+            .jumbotron {
+                background: linear-gradient(#FC9C73, #FFFFFF);
+                min-height: 350px;
+                
+                /* -webkit-background-clip: text;
+                      -webkit-text-fill-color: transparent;*/
+            }
+            .header{
+                text-shadow: 2px 2px 2px #4D4845, 3px 2px 3px #ccc, 1px 1px 1px #000000;
+                font-family: 'Ubuntu', sans-serif;
+            }
+
+            .darktext {
+                color: #4D4845;
+            }
+
+            img {
+                width: 15%;
+            }
+
+            .border1 {
+                border-right: 1px solid #ccc;
+                width: 30px;
+                height: 300px;
+                border-image: linear-gradient(#FFFFFF, #ccc, #FFFFFF) 1;
+            }
+
+            .getstarted {
+                height: 100px;
+                /*border-image: linear-gradient(#ccc, #ccc, #ccc);  */
+                /*width: 1150px;*/
+            }
+            .slogan{
+                font-family: 'Ubuntu', sans-serif;
+                font-style: italic;
+                font-size: 25px;
+            }
+            .form-footer{
+                    font-size: 10px;
+                    font-weight: bold;
+                }
+        </style> 
 </head>
 
 <body>
@@ -70,11 +142,11 @@
         <h3 class=" m-4 slogan"> Complete the form below to request a review for your desired product! </h3>
     </div>
 
-    <form class="form-center" action="/Requestform" method="POST" enctype="multipart/form-data">
-        <div class="form-footer">Fields marked with a * are required</div>
+    <form class="form-center" action="/RequestForm" method="POST" enctype="multipart/form-data">
+         <div class="form-footer">Fields marked with a * are required</div>
         <br>
         <div class="form-group">
-            <label for="exampleTextarea"> Product name *</label>
+            <label for="exampleTextarea">Product name: *</label>
             <input class="form-control" type="text" name="Product" placeholder="Product" required>
         </div>
 
@@ -83,12 +155,7 @@
             <input class="form-control" type="text" name="Brand" placeholder="Brand">
         </div>
 
-        <div class="form-group">
-            <label for="exampleTextarea">Product ID number:</label>
-            <input class="form-control" type="text" name="ID" placeholder="ID">
-
-        </div>
-
+    
         <div class="form-group">
             <label for="exampleSelect1"> Product Category *</label>
             <select class="form-control" name="Category">
