@@ -12,7 +12,7 @@ describe ('Database Connection', function(){
 });
 
 //Test2:
-/*describe ('Render Home Page', function(){
+describe ('Render Home Page', function(){
 	it('Check if rendered to home Page', function(){
 		
 		assert.equal(app(), true);
@@ -47,4 +47,4 @@ describe ('Redirect to secret Page', function(){
 		
 		assert.equal(app(), true);
 	});
-});*/
+});
