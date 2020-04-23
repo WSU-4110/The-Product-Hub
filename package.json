@@ -3,13 +3,11 @@
     "version": "1.0.0",
     "description": "Welcome to The Fool Stacker's repo for their latest project called \"The Product Hub: Consult to get the best results\"",
     "main": "app.js",
- 
     "dev": "nodemon app.js",
     "scripts": {
-        "test": "test",
+        "test": "echo \"Error: no test specified\" && exit 1",
         "start": "nodemon app.js",
-        "nodemon": "nodemon app.js",
-        "test": "mocha"
+        "nodemon": "nodemon app.js"
     },
     "repository": {
         "type": "git",
@@ -17,7 +15,6 @@
     },
     "keywords": [],
     "author": "",
-
     "license": "ISC",
     "bugs": {
         "url": "https://github.com/WSU-4110/The-Product-Hub/issues"
@@ -42,11 +39,11 @@
         "web-push": "^3.4.3"
     },
     "devDependencies": {
+        "chai": "^4.2.0",
         "express-fileupload": "^1.1.7-alpha.3",
         "gradle": "^1.0.9",
+        "mocha": "^7.1.1",
         "nodemailer": "^6.4.6",
-        "nodemon": "^2.0.3",
-        "chai": "^4.2.0",
-        "mocha": "^7.1.1"
+        "nodemon": "^2.0.3"
     }
 }
