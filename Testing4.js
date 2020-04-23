@@ -28,6 +28,13 @@ module.exports=function (){
     return true;
 };
 
+//Test5:
+/*module.exports= function (req, res) {
+        alert("Product posted successfully!");
+        res.render("secret");     
+return true;
+};*/
+
 
 
 
