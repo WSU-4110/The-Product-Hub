@@ -4,7 +4,7 @@ node_js:
 
 
  install:
- -npm update && npm install
+ - npm install
   
   script:
   - npm test
