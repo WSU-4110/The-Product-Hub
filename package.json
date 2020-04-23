@@ -4,9 +4,9 @@
     "description": "Welcome to The Fool Stacker's repo for their latest project called \"The Product Hub: Consult to get the best results\"",
     "main": "app.js",
     "dev": "nodemon app.js",
-     "directories": {
-    "test": "test"
-  },
+    "directories": {
+        "test": "test"
+    },
     "scripts": {
         "start": "nodemon app.js",
         "nodemon": "nodemon app.js",
