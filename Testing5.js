@@ -23,7 +23,7 @@ var con = mysql.createConnection({
 //Test5:
 module.exports= function (req, res) {
         alert("Product posted successfully!");
-        res.redirect("secret");     
+        res.render("secret");     
 return true;
 };
 
