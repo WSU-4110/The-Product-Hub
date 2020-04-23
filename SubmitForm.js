@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "AstronomyNerd15",
+    password: "",
     database: "testlogin"
 });
 
@@ -59,9 +59,6 @@ const submitForm = function(req, res) {
     var filePath = "/uploads/" + Date.now() + img_name;
     var defaultPath = "public/img/logo.jpeg";
 
-            if (err) throw err;
-            console.log("Insert Successful");     
-        });
 
     if (file.mimetype == "image/jpeg" || file.mimetype == "image/png" || file.mimetype == "image/gif") {
         file.mv("public/uploads/" + Date.now() + file.name, function(err) {
@@ -71,7 +68,7 @@ const submitForm = function(req, res) {
             if (err)
                 console.log(err);
             ////Insert from fields into table////
-            con.query("INSERT INTO product (name, brand, productId, category, question, sponsored,image) VALUES (?, ? , ? , ? , ?, ? , ?)", [product, brand, productId, category, question, sponsored, filePath], function(err, result) {
+            con.query("INSERT INTO product (name, brand, category, question, sponsored,image) VALUES (?, ? , ?  , ?, ? , ?)", [product, brand, category, question, sponsored, filePath], function(err, result) {
 
                 if (err) throw err;
                 console.log("Insert Successful");

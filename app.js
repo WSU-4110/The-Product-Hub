@@ -256,7 +256,7 @@ app.get("/RequestForm", function(req, res) {
 
 
 //Link Product Form webpage to Submit Form functionaility
-app.post("/post", submitForm);
+app.post("/RequestForm", submitForm);
 
 
 
