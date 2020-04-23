@@ -1,5 +1,5 @@
 const assert= require('assert');
-const app= require('../Testing');
+const app= require('../Testing2');
 
 
 //Test2:
