@@ -20,9 +20,6 @@ var con = mysql.createConnection({
 
 
 
-
-
-
 //Test5:
 const submitForm= function (req, res) {
         alert("Product posted successfully!");
