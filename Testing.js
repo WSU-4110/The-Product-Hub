@@ -31,7 +31,7 @@ var con = mysql.createConnection({
     };
 
 
-/*//Test 2 for app.js functions:
+//Test 2 for app.js functions:
     module.exports=function (){
     app.get("/", function(req, res) {
          res.render("home");
@@ -67,4 +67,4 @@ const submitForm= function (req, res) {
         res.redirect("secret");     
 return true;
 };
-module.exports= submitForm;*/
+module.exports= submitForm;
