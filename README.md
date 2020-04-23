@@ -4,6 +4,8 @@
 **The Fool Stacker:**
 Dana Abuqalbin, Bandhanpreet Kaur, Noble Amarteifio, Marwan Abbas.
 
+[![Build Status](https://travis-ci.org/WSU-4110/The-Product-Hub.svg?branch=master)](https://travis-ci.org/WSU-4110/The-Product-Hub)
+
 #### - What you will need:
 
 - Express Node JS
