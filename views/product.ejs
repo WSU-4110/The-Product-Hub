@@ -108,14 +108,12 @@ my-sm-0 ml-3" type="submit" value="Search">
                                 <p>Question:
                                     <%= product.question %>
                                 </p>
-                                <p>Reviews:
-                                    <%= product.review %>
-                                </p>
-                                <p>Rate:
-                                    <%= product.rate %>
-                                </p>
-                                <button class="btn btn-outline-white btn-md my-2 my-sm-0 " href="/comment/:<%= product.id %>">View Product Page</button>
-                            </div>
+                                
+                                <form action="/search/<%= product.id %>">
+                                    <button class="btn btn-outline-white btn-md my-2 my-sm-0 " >View Product Page</button>
+                            
+                                </form>
+                               </div>
 
 
                         </div>

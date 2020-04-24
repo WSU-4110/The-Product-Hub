@@ -245,6 +245,7 @@ app.get('/secret', function(req, res) {
 
 //Get Prouct Form
 app.get("/RequestForm", function(req, res) {
+    
     if (req.session.loggedin) {
         res.render("RequestForm");
     } else {
@@ -360,9 +361,7 @@ app.get('/viewProfile', function(req, res) {
 
 
 
-
-
-
+//Search Query
 //Search by product name, brand_name or category and prioritize sponsored proucts
 app.get('/search', function(req, res){
 
@@ -373,7 +372,7 @@ app.get('/search', function(req, res){
 
 	let query = con.query(sql, (err, results) => {
 		if(err) throw err;
-		console.log(results);
+		
 		res.render("product", {
 			title: 'Search Results:' + searchToken, 
 			product: results
@@ -382,10 +381,7 @@ app.get('/search', function(req, res){
 		
 });
 
-
-
 //QUERY BY CATEGORY ROUTES//
-
 //View Food Category Route
 app.get("/food", function(req, res) {
 
@@ -403,8 +399,6 @@ app.get("/food", function(req, res) {
 });
 
 
-
-
 app.get("/electronics", function(req, res) {
 
     let page = 'electronics'
@@ -419,6 +413,7 @@ app.get("/electronics", function(req, res) {
     })
 
 });
+
 
 
 app.get("/fashion", function(req, res) {
@@ -484,6 +479,23 @@ app.get("/other", function(req, res) {
 });
 
 
+//Launch Product Page for Reviews and Rating
+app.get("/search/:id", function(req, res) {
+ let id = req.params.id;
+
+    let sql = `SELECT product.image, product.name, review.brand,review.category,review.remark,review.rating 
+    FROM review INNER JOIN product ON review.pid = product.id WHERE product.id =${id}`
+
+    let query = con.query(sql, (err, result) => {
+        if (err) throw err;
+        
+        res.render("ProductPage", {
+            title: 'Product :',
+            product: result
+        });
+        
+    })
+});
 
 
 //About Us Page
@@ -503,3 +515,4 @@ app.get('/contact', function(req, res) {
 app.listen(3000, function() {
     console.log("Server started...");
 });
+

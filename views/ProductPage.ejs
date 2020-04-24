@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="/css/styles.css">
     <title>
-        Search Product
+        Product Page
     </title>
 </head>
 
@@ -19,7 +19,7 @@
     <header class="inner">
         <!-- Navigation Bar -->
         <nav class="navbar navbar-expand-lg navbar-dark">
-             <a class="navbar-brand" href="/"><img src="logo1.jpeg" href="#" class="justify-content-center img-fluid">The
+             <a class="navbar-brand" href="/">The
             Product Hub</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -67,110 +67,82 @@
         </nav>
     </header>
     
-    <div align ="center" class="jumbotron jumbotron-fluid darktext">
-    <h2 class="display-2 m-5">Category Page </h2>
-    <h4 class="display-4 m-5"> Product Reviews </h4>
+    <div align="center" class="jumbotron jumbotron-fluid darktext">
+    <h2 class="display-2 m-5">Product Page </h2>
+  
 </div>
 
-<div class = "container">
-<div class = "row"> 
+<!-- Page Content -->
+<div class="container-fluid">
 <% if((product.length )>0){ %>
 
-<% product.forEach(function(product){ %>
+    <h1 class="my-4"> <%= title%> <%= product[0].brand %> <%= product[0].name %></h1>
 
-<div class="col">
-    <div class ="card" align = center class = "card border-dark" style = "height: 500px; width: 300px;" >
-        <div data-target = "#popup_img">
-      <img style = "height: 250px; width: 250px;" src= "<%= product.image %>" data-target = "#popup_img">
-        </div>
-        <h5 class="card-title"> <%= product.name %> </h5> 
-        
-        <!--  Rating: <%= product.rate %>  -->
-        <div>
-            <form action="/search/<%= product.id %>">
-                <button class="btn btn-dark btn-md my-2 my-sm-0 " >View Product Page</button>
-        
-            </form>
-    </div>
-</div>
-</div>
-
-     <!-- Modal -->
-  <div class="modal fade" id="ProductPopScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable" >
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalScrollableTitle"><%= product.name %></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <p> Product Name: <%= product.name %> </p>
-            
-          <p> Product Brand: <%= product.brand %> </p>
-          <br>
-          <p> Product Category: <%= product.category %> </p>
-          <p> Product Question: <%= product.question %> </p>
-          <br>
-                    
-          <!-- Comments go HERE -->
-    
-            </div>
-        </div>
+  
+    <!-- Product Item Row -->
+    <div class="row">
+  
+      <div class="col col-md-4">
+        <img class="w-100" src="<%= product[0].image %>" />
+        <img class="img-fluid w-100 " src="<%= product.image %> " alt=""/>
       </div>
-    </div>
-</div>
-</div>
+     
+  
+      <div class="col col-md-6">
+        
+            <h3 class="mb-2">Product Rating</h3><hr>
+           <p> <%= product[0].rating %> </p>
+          
+           <% for (var i =0; i < 5;  i++ ) { %>
 
-<br> 
+            <% if (i < product[0].rating) { %>
+                 <span class="fa fa-star checked"></span>
+                <%} else { %>
+                    <span class="fa fa-star"></span>
+                <% } %>
+                    
+                   
+            <% } %>
 
-
-<% }); %> 
-
-</div>
-</div>
-<% } else{ %>
-<h1>No Result to Display</h1>
-<%= console.log(product.length) %>
-    <% } %>
-    
-    <style>
+                
+            <br>
             
-        .image_pop {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            border-radius: 8px;
-        }
-        .card-deck {
-            width:100 px;
-            height: 100px;
+        <hr>
 
-        }
-        .form-center {
-            padding-top: 25px;
-            padding-bottom: 25px;
-            padding-left: 25px;
-            padding-right: 25px;
-        }
+        <div class="ratings">
+            <p class="pull-right"> reviews</p>
+        </div>
+        
+        <h3 >Product Review </h3>
+        <% product.forEach(function(product){ %>
+        <p><%= product.remark %> </p>
+      <h6 class ="float-right">    </h6>
+      <hr>   
+      <p>--<%= product.date %> </p> 
+      <br>
+      <% }); %>
+      </div>
 
-        .form-control {
-            box-shadow: none;
-            font-weight: normal;
-        }
+     <% } else{ %>
+                <h2 class="product-header">No Reviews
+                    to Display</h2>
 
-        .background {
-            background-color: #4D4845;
-        }
+                <%= console.log(product.length) %>
+                <% } %>
+    </div>
+    <!-- /.row -->
+    
+    
+  
+  <!-- /.container -->
 
-        .navbar .dropdown-menu.form-wrapper {
-            width: 300px;
-            padding: 15px;
-            left: auto;
-            right: 0;
-        }
+</div> 
 
+
+
+    
+<style>
+ 
         
 
         .orange {
@@ -179,7 +151,7 @@
 
         .jumbotron {
             background: linear-gradient(#FC9C73, #FFFFFF);
-            min-height: 350px;
+            min-height: 150px;
             text-shadow: 2px 2px 2px #4D4845, 3px 2px 3px #ccc, 2px 3px 3px #000000;
             /* -webkit-background-clip: text;
                   -webkit-text-fill-color: transparent;*/
@@ -188,23 +160,11 @@
         .darktext {
             color: #4D4845;
         }
+.checked {
+  color: orange;
+       
 
-        img {
-            width: 15%;
-        }
-
-        .border1 {
-            border-right: 1px solid #ccc;
-            width: 30px;
-            height: 300px;
-            border-image: linear-gradient(#FFFFFF, #ccc, #FFFFFF) 1;
-        }
-
-        .getstarted {
-            height: 100px;
-            /*border-image: linear-gradient(#ccc, #ccc, #ccc);  */
-            /*width: 1150px;*/
-        }
+       
     </style> 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

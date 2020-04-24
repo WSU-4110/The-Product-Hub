@@ -93,16 +93,8 @@ const submitForm = function(req, res) {
     } else {
 
         ////Insert from fields into table////
-<<<<<<< HEAD
         con.query("INSERT INTO product (name, brand, id, category, question, image) VALUES (?, ? , ? , ? , ? , ?)", [product, brand, productId, category, question, defaultPath], function(err, result) {
 
-=======
-<<<<<<< HEAD
-        con.query("INSERT INTO product (name, brand, id, category, question, image) VALUES (?, ? , ? , ? , ? , ?)", [product, brand, productId, category, question, defaultPath], function(err, result) {
-=======
-        con.query("INSERT INTO product (name, brand, question,category, sponsored,image) VALUES (?, ? , ?  , ?, ? , ?)", [product, brand, category, question, sponsored, defaultPath], function(err, result) {
->>>>>>> dac6cb3c9c84088abdb5b7fde84e74bf3e0f40fe
->>>>>>> a0200c5c81e31739e173acfc07968e566a8175ac
 
             if (err) throw err;
             console.log("Wrong format or no picture uploaded");
