@@ -65,7 +65,7 @@ passport.deserializeUser(User.deserializeUser());
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "AstronomyNerd15",
+    password: "",
     database: "testlogin"
 });
 
@@ -245,12 +245,14 @@ app.get('/secret', function(req, res) {
 
 //Get Prouct Form
 app.get("/RequestForm", function(req, res) {
-    if (req.session.loggedin) {
+    res.render("RequestForm");
+   /*if (req.session.loggedin) {
         res.render("RequestForm");
     } else {
         alert("You must be logged in to view this page");
         res.redirect("/login");
     }
+    */
 });
 
 
