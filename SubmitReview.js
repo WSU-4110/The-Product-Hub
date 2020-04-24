@@ -22,44 +22,101 @@ var con = mysql.createConnection({
 });
 
 //Perform Post request after submitting the form
-//app.post('/submitForm');
 const submitReview= function (req, res) {
     var product=req.body.Product;
     var brand=req.body.Brand;
-    //var category=req.body.Category;
+    var category=req.body.Category;
     var remark=req.body.Remark;
     var image= req.body.Image;
     var rating= req.body.Rating;
+    var sponsored = req.body.Sponsored;
     var username=req.session.username;    
 
-    con.connect(function (err) {
-          //  if (err) throw err;
-            console.log("connected");
-        });
 
-        ////Insert from fields into table////
-        con.query("INSERT INTO review (name, brand, remark, category, image, rate) VALUES (?, ? , ? , 'Food', ?, ?)",
-            [product, brand, remark, image, rating], function (err, result) {
+    con.connect(function(err) {
+        //  if (err) throw err;
+        console.log("connected");
+    });
 
-            if (err) throw err;
-            console.log("Insert Successful");     
-        });
+    if (!req.files)
+        return res.status(400).send('No image file was uploaded.');
 
-        
-                ////Link the posted product with the logged in user////
-        con.query("INSERT INTO reviewforms (formID, userName) value((SELECT id FROM review WHERE name=?), ?)",
+
+    var file = req.files.uploaded_image;
+    var img_name = file.name;
+
+
+    var filePath = "/uploads/" + Date.now() + img_name;
+    var defaultPath = "public/img/logo.jpeg";
+
+
+    if (file.mimetype == "image/jpeg" || file.mimetype == "image/png" || file.mimetype == "image/gif") {
+        file.mv("public/uploads/" + Date.now() + file.name, function(err) {
+            console.log("after move")
+            console.log(req.files)
+
+            if (err)
+                console.log(err);
+            ////Insert from fields into table////
+            con.query("INSERT INTO review (name, brand,remark, category, image, sponsored, rating) VALUES (?, ? , ?  , ?, ? , ?, ?)", 
+                [product, brand, remark, category,  filePath, sponsored, rating], function(err, result) {
+
+                if (err) throw err;
+                console.log("Insert Successful");
+                console.log(req.body);
+
+            con.query("INSERT INTO reviewforms (formID, userName) value((SELECT id FROM review WHERE name=?), ?)",
             [product, username], function (err, result) {  
             if (err) throw err;
             console.log("Insert to ReviewForms Successful");
             }
         );
+            alert("Review Posted!");
+                res.redirect("secret");
+                
 
-        alert("Review posted successfully!");
-        res.redirect("secret");     
-      
+            });
+        });
+
+
+
+    } else {
+
+        ////Insert from fields into table////
+        con.query("INSERT INTO review (name, brand, remark,category, image, sponsored, rating) VALUES (?, ? , ? , ? , ? , ?, ?)", [product, brand, remark,category, defaultPath, sponsored, rating], function(err, result) {
+
+
+            if (err) throw err;
+            console.log("Wrong format or no picture uploaded");
+
+            con.query("INSERT INTO userforms (formID, userName) value((SELECT id FROM product WHERE name=?), ?)",
+            [product, username], function (err, result) {  
+            if (err) throw err;
+            console.log("Insert to UserForms Successful");
+            }
+        );
+
+            res.redirect("secret");
+
+        });
+    }
+    /*function two(){
+        setTimeout(()=>{*/
+    ////Link the posted product with the logged in user////
+    // con.query("INSERT INTO userforms (formID, userName) value((SELECT id FROM product WHERE Product=?), ?)", [product, username], function(err, result) {
+    //     if (err) throw err;
+    //     console.log("Insert to UserForms Successful");
+    // });
+
+    // alert("Product posted successfully!");
+    // res.redirect("secret");
+    /*   });
+        }
+        two();*/
 
 };
 
+
 //To tell the app that we are exporting this function
 //Linking it to app.js
-module.exports= submitReview;
+module.exports = submitReview;
