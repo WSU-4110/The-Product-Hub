@@ -68,11 +68,22 @@ const submitForm = function(req, res) {
             if (err)
                 console.log(err);
             ////Insert from fields into table////
-            con.query("INSERT INTO product (name, brand, category, question, sponsored,image) VALUES (?, ? , ?  , ?, ? , ?)", [product, brand, category, question, sponsored, filePath], function(err, result) {
+            con.query("INSERT INTO product (name, brand,question, category, image, sponsored) VALUES (?, ? , ?  , ?, ? , ?)", 
+                [product, brand, question, category,  filePath, sponsored], function(err, result) {
 
                 if (err) throw err;
                 console.log("Insert Successful");
-                console.log(req.body)
+                console.log(req.body);
+
+            con.query("INSERT INTO userforms (formID, userName) value((SELECT id FROM product WHERE name=?), ?)",
+            [product, username], function (err, result) {  
+            if (err) throw err;
+            console.log("Insert to UserForms Successful");
+            }
+        );
+            alert("Product Posted!");
+                res.redirect("secret");
+                
 
             });
         });
@@ -82,10 +93,23 @@ const submitForm = function(req, res) {
     } else {
 
         ////Insert from fields into table////
+<<<<<<< HEAD
         con.query("INSERT INTO product (name, brand, id, category, question, image) VALUES (?, ? , ? , ? , ? , ?)", [product, brand, productId, category, question, defaultPath], function(err, result) {
+=======
+        con.query("INSERT INTO product (name, brand, question,category, sponsored,image) VALUES (?, ? , ?  , ?, ? , ?)", [product, brand, category, question, sponsored, defaultPath], function(err, result) {
+>>>>>>> dac6cb3c9c84088abdb5b7fde84e74bf3e0f40fe
 
             if (err) throw err;
             console.log("Wrong format or no picture uploaded");
+
+            con.query("INSERT INTO userforms (formID, userName) value((SELECT id FROM product WHERE name=?), ?)",
+            [product, username], function (err, result) {  
+            if (err) throw err;
+            console.log("Insert to UserForms Successful");
+            }
+        );
+
+            res.redirect("secret");
 
         });
     }

@@ -17,12 +17,13 @@ var con = mysql.createConnection({
     password: "AstronomyNerd15",
     database: "testlogin"
 });
-//Test about page for app.js functions:
 
-module.exports=function (){
-    app.get("/", function(req, res) {
-         res.render("about");
-         
-    });
-    return true;
+
+
+//Test5:
+module.exports= function (req, res) {
+        alert("Product posted successfully!");
+        res.render("secret");     
+return true;
 };
+
